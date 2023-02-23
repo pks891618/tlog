@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:menu_bar/menu_bar.dart';
+import '../custom_widgets/battery_alert.dart';
+import '../custom_widgets/configure_data.dart';
+import '../custom_widgets/current_reading.dart';
+import '../custom_widgets/configure_device.dart';
+import '../custom_widgets/stop_logging.dart';
 
-import 'widgets.dart';
 
 List<BarButton> menuBarButtons(BuildContext context) {
   return [
@@ -138,24 +142,46 @@ List<BarButton> menuBarButtons(BuildContext context) {
       submenu: SubMenu(
         menuItems: [
           MenuButton(
-            onTap: () {},
+            onTap: () {
+              //showDeviceAlert(context);
+            },
             text: Column(
               children: [
                 Row(
                   children: [
-                    FittedBox(
-                        child: Icon(Icons.wifi_protected_setup,
-                            size: 15, color: Color(0xff28bf2d))),
-                    Container(child: Text('Connect')),
+                    Container(
+                      //  color: Color(0xff038207),
+                        child: FittedBox(
+                            child: Icon(Icons.wifi_protected_setup,
+                              size: 15, color: Color(0xff28bf2d),
+                            ),
+                        )
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                         
+                        },
+                        child: Text(
+                          'Connect',
+                          style:
+                          TextStyle(color: Color(0xff0a49d1), fontSize: 12),
+                        )),
                   ],
                 ),
               ],
             ),
             //shortcutText: 'Ctrl+Z',
           ),
+
+
           MenuDivider(indent: 15),
           MenuButton(
-            onTap: () {},
+            onTap: () {
+              configureDevice(context);
+            },
             text: Column(
               children: [
                 Row(
@@ -173,7 +199,7 @@ List<BarButton> menuBarButtons(BuildContext context) {
                     ),
                     GestureDetector(
                         onTap: () {
-                          showAlertDialog(context);
+                          configureDevice(context);
                         },
                         child: Text(
                           'Configure Device',
@@ -227,7 +253,7 @@ List<BarButton> menuBarButtons(BuildContext context) {
                     ),
                     GestureDetector(
                       onTap: () {
-                        stopLogging(context);
+                        stopLoggingAlert(context);
                       },
                       child: Container(
                           child: Text(
@@ -254,7 +280,7 @@ List<BarButton> menuBarButtons(BuildContext context) {
                     ),
                     GestureDetector(
                       onTap: () {
-                        showConfiguredata(context);
+                       showConfiguredata(context);
                       },
                       child: Container(
                           child: Text(
@@ -283,11 +309,16 @@ List<BarButton> menuBarButtons(BuildContext context) {
                     SizedBox(
                       width: 10.0,
                     ),
-                    Container(
-                        child: Text(
-                      'Show battery voltage',
-                      style: TextStyle(color: Color(0xff0a49d1), fontSize: 12),
-                    )),
+                    GestureDetector(
+                      onTap: (){
+                        batteryAlert(context);
+                      },
+                      child: Container(
+                          child: Text(
+                        'Show battery voltage',
+                        style: TextStyle(color: Color(0xff0a49d1), fontSize: 12),
+                      )),
+                    ),
                   ],
                 ),
               ],
@@ -354,9 +385,15 @@ List<BarButton> menuBarButtons(BuildContext context) {
                   color: Colors.red,
                 ),
                 SizedBox(width: 8.0,),
-                Text(
+                TextButton(
+                  child:Text(
                   'Statical',
-                  style: TextStyle(color: Color(0xff0a49d1), fontSize: 12),
+                  style: TextStyle(color: Color(0xff0a49d1), fontSize: 12)), onPressed: () {
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) =>  Statical()),
+                  // );
+                },
                 ),
               ],
             ),
