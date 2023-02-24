@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
 import '../custom_class/custom_widget_class.dart';
+import '../screens/statical.dart';
 
 
 
@@ -32,7 +33,7 @@ configureDevice(BuildContext context) {
                       ),
                       IconButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          value.doSomething(buildBlank(context));
                         },
                         icon: Icon(
                           Icons.close,
@@ -80,7 +81,7 @@ configureDevice(BuildContext context) {
                         child: TextButton(
                           child: Text("No"),
                           onPressed: () {
-                            Navigator.pop(context);
+                            value.doSomething(buildBlank(context));
                           },
                         ),
                       ),
@@ -398,277 +399,296 @@ show(BuildContext context) {
   // showDialog(
   //   context: context,
   //   builder: (BuildContext context) {
-      return Column(
-        children: [
-          SizedBox(height: 50),
-          Container(
-            width: 550,
-            decoration: BoxDecoration(
-                color: Color(0xffe6f9fc),
-              border: Border.all(color: Colors.black,)
-            ),
-
-
-
-
-
-            child: Column(
+      return Consumer<MyModel>(
+        builder: (context, value, child) {
+          return
+            Column(
               children: [
+                SizedBox(height: 50),
                 Container(
-                  color: Colors.white,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  width: 550,
+                  decoration: BoxDecoration(
+                      color: Color(0xffe6f9fc),
+                      border: Border.all(color: Colors.black,)
+                  ),
+                  child: Column(
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: 20,
-                            width: 20,
-                            color: Color(0xff03114f),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            "Data Configure Window",
-                            style: TextStyle(color: Colors.black87, fontSize: 15),
-                          ),
-                        ],
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(
-                          Icons.close,
-                          size: 15,
+                      Container(
+                        color: Colors.white,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  height: 20,
+                                  width: 20,
+                                  color: Color(0xff03114f),
+                                ),
+                                SizedBox(
+                                  width: 5.0,
+                                ),
+                                Text(
+                                  "Data Configure Window",
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 15),
+                                ),
+                              ],
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                value?.doSomething(buildBlank(context));
+                              },
+                              icon: Icon(
+                                Icons.close,
+                                size: 15,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 30),
-                  child:
-                  Column(
-                    children: users.map((userone) {
-                      return Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                userone.name,
-                                style: TextStyle(fontSize: 11.0),
-                              ),
-                            ),
-                            Container(
-                                margin: EdgeInsets.all(5),
-                                width: 300,
-                                decoration: BoxDecoration(
-                                    border:
-                                    Border.all(color: Colors.black, width: 0.50)),
-                                child: Text(
-                                  userone.address,
-                                  style: TextStyle(fontSize: 11.0),
-                                )),
-                          ]);
-                    }).toList(),
-                  ),
-                ),
-                Text(
-                  "value should contain minium of 5 characters",
-                  style: TextStyle(fontSize: 13.0),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 30),
-                  child: Column(
-                    children: usertime.map((usertime) {
-                      return Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                usertime.name,
-                                style: TextStyle(fontSize: 11.0),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 30),
+                        child:
+                        Column(
+                          children: users.map((userone) {
+                            return Row(
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceBetween,
                                 children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      userone.name,
+                                      style: TextStyle(fontSize: 11.0),
+                                    ),
+                                  ),
                                   Container(
-                                    margin: EdgeInsets.all(5),
-                                    width: 300,
-                                    child: Row(
+                                      margin: EdgeInsets.all(5),
+                                      width: 300,
+                                      decoration: BoxDecoration(
+                                          border:
+                                          Border.all(color: Colors.black,
+                                              width: 0.50)),
+                                      child: Text(
+                                        userone.address,
+                                        style: TextStyle(fontSize: 11.0),
+                                      )),
+                                ]);
+                          }).toList(),
+                        ),
+                      ),
+                      Text(
+                        "value should contain minium of 5 characters",
+                        style: TextStyle(fontSize: 13.0),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 30),
+                        child: Column(
+                          children: usertime.map((usertime) {
+                            return Row(
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      usertime.name,
+                                      style: TextStyle(fontSize: 11.0),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment
+                                          .start,
+                                      crossAxisAlignment: CrossAxisAlignment
+                                          .start,
                                       children: [
-                                        Text(
-                                          "DAY: ",
-                                          style: TextStyle(fontSize: 11.0),
-                                        ),
                                         Container(
-                                            width: 40,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black,
-                                                    width: 0.50)),
-                                            child: Text(
-                                              usertime.day,
-                                              style: TextStyle(fontSize: 12.0),
-                                            )),
-                                        Text(
-                                          "  HR: ",
-                                          style: TextStyle(fontSize: 11.0),
+                                          margin: EdgeInsets.all(5),
+                                          width: 300,
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "DAY: ",
+                                                style: TextStyle(
+                                                    fontSize: 11.0),
+                                              ),
+                                              Container(
+                                                  width: 40,
+                                                  decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                          color: Colors.black,
+                                                          width: 0.50)),
+                                                  child: Text(
+                                                    usertime.day,
+                                                    style: TextStyle(
+                                                        fontSize: 12.0),
+                                                  )),
+                                              Text(
+                                                "  HR: ",
+                                                style: TextStyle(
+                                                    fontSize: 11.0),
+                                              ),
+                                              Container(
+                                                  width: 40,
+                                                  decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                          color: Colors.black,
+                                                          width: 0.50)),
+                                                  child: Text(
+                                                    usertime.hour,
+                                                    style: TextStyle(
+                                                        fontSize: 12.0),
+                                                  )),
+                                              Text(
+                                                "  MIN: ",
+                                                style: TextStyle(
+                                                    fontSize: 11.0),
+                                              ),
+                                              Container(
+                                                  width: 40,
+                                                  decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                          color: Colors.black,
+                                                          width: 0.50)),
+                                                  child: Text(
+                                                    usertime.min,
+                                                    style: TextStyle(
+                                                        fontSize: 12.0),
+                                                  )),
+                                              Text(
+                                                "  SEC: ",
+                                                style: TextStyle(
+                                                    fontSize: 11.0),
+                                              ),
+                                              Container(
+                                                  width: 40,
+                                                  decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                          color: Colors.black,
+                                                          width: 0.50)),
+                                                  child: Text(
+                                                    usertime.sec,
+                                                    style: TextStyle(
+                                                        fontSize: 12.0),
+                                                  )),
+                                            ],
+                                          ),
                                         ),
-                                        Container(
-                                            width: 40,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black,
-                                                    width: 0.50)),
-                                            child: Text(
-                                              usertime.hour,
-                                              style: TextStyle(fontSize: 12.0),
-                                            )),
                                         Text(
-                                          "  MIN: ",
-                                          style: TextStyle(fontSize: 11.0),
+                                          usertime.values,
+                                          style: TextStyle(fontSize: 12.0),
                                         ),
-                                        Container(
-                                            width: 40,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black,
-                                                    width: 0.50)),
-                                            child: Text(
-                                              usertime.min,
-                                              style: TextStyle(fontSize: 12.0),
-                                            )),
-                                        Text(
-                                          "  SEC: ",
-                                          style: TextStyle(fontSize: 11.0),
-                                        ),
-                                        Container(
-                                            width: 40,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black,
-                                                    width: 0.50)),
-                                            child: Text(
-                                              usertime.sec,
-                                              style: TextStyle(fontSize: 12.0),
-                                            )),
                                       ],
                                     ),
                                   ),
-                                  Text(
-                                    usertime.values,
-                                    style: TextStyle(fontSize: 12.0),
+                                ]);
+                          }).toList(),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 30),
+                        child: Column(
+                          children: logperiod.map((userone) {
+                            return Row(
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      userone.name,
+                                      style: TextStyle(fontSize: 11.0),
+                                    ),
                                   ),
-                                ],
-                              ),
+                                  Container(
+                                      margin: EdgeInsets.all(5),
+                                      width: 300,
+                                      decoration: BoxDecoration(
+                                          border:
+                                          Border.all(color: Colors.black,
+                                              width: 0.50)),
+                                      child: Text(
+                                        userone.address,
+                                        style: TextStyle(fontSize: 11.0),
+                                      )),
+                                ]);
+                          }).toList(),
+                        ),
+                      ),
+                      Divider(
+                        color: Colors.black,
+                      ),
+                      SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text.rich(
+                          TextSpan(
+                            text: 'Caution : ',
+                            style: TextStyle(color: Colors.red, fontSize: 12),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text:
+                                  'Please adjust your system clock with real time clock for accurate results.',
+                                  style: TextStyle(color: Colors.black,
+                                      fontSize: 12)),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Container(
+                            height: 25,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff989c99)),
+                              color: Color(0xffcfd1d0),
                             ),
-                          ]);
-                    }).toList(),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 30),
-                  child: Column(
-                    children: logperiod.map((userone) {
-                      return Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
+                            child: TextButton(
                               child: Text(
-                                userone.name,
-                                style: TextStyle(fontSize: 11.0),
+                                "Configure",
+                                style: TextStyle(fontSize: 10.0,
+                                    color: Colors.black),
                               ),
+                              onPressed: () {
+                                //showAlertDialogs(context);
+                              },
                             ),
-                            Container(
-                                margin: EdgeInsets.all(5),
-                                width: 300,
-                                decoration: BoxDecoration(
-                                    border:
-                                    Border.all(color: Colors.black, width: 0.50)),
-                                child: Text(
-                                  userone.address,
-                                  style: TextStyle(fontSize: 11.0),
-                                )),
-                          ]);
-                    }).toList(),
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Container(
+                            height: 25,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff989c99)),
+                              color: Color(0xffcfd1d0),
+                            ),
+                            child: TextButton(
+                              child: Text(
+                                "Cancel",
+                                style: TextStyle(fontSize: 10.0,
+                                    color: Colors.black),
+                              ),
+                              onPressed: () {
+                                value.doSomething(buildBlank(context));
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      )
+                    ],
                   ),
                 ),
-                Divider(
-                  color: Colors.black,
-                ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Text.rich(
-                    TextSpan(
-                      text: 'Caution : ',
-                      style: TextStyle(color: Colors.red, fontSize: 12),
-                      children: <TextSpan>[
-                        TextSpan(
-                            text:
-                            'Please adjust your system clock with real time clock for accurate results.',
-                            style: TextStyle(color: Colors.black, fontSize: 12)),
-                      ],
-                    ),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Container(
-                      height: 25,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xff989c99)),
-                        color: Color(0xffcfd1d0),
-                      ),
-                      child: TextButton(
-                        child: Text(
-                          "Configure",
-                          style: TextStyle(fontSize: 10.0, color: Colors.black),
-                        ),
-                        onPressed: () {
-                          //showAlertDialogs(context);
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Container(
-                      height: 25,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xff989c99)),
-                        color: Color(0xffcfd1d0),
-                      ),
-                      child: TextButton(
-                        child: Text(
-                          "Cancel",
-                          style: TextStyle(fontSize: 10.0, color: Colors.black),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 30,
-                )
               ],
-            ),
-          ),
-        ],
-      );
+            );
+
+        });
     }

@@ -895,5 +895,15 @@ Widget buildTable(BuildContext context){
       ),
     );
 }
+Widget buildBlank(BuildContext context){
+  var Size = MediaQuery.of(context).size;
+  return
+    Container(
+      height: Size.height/1.1,
+      color: Colors.white,
+
+
+    );
+}
 
 
