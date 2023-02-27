@@ -23,3 +23,7 @@ class Staticals{
   String date, tempreture;
   Staticals({required this.date, required this.tempreture});
 }
+class tempreatureData{
+  String? tempreture;
+  tempreatureData({required this.tempreture});
+}

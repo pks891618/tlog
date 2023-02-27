@@ -27,9 +27,15 @@ configureDevice(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Configuration Request",
-                        style: TextStyle(color: Colors.black87, fontSize: 15),
+                      TextButton(
+                        onPressed: () {
+                          value.doSomething(buildBlank(context));
+
+                        },
+                        child: Text(
+                          "Configuration Request",
+                          style: TextStyle(color: Colors.black87, fontSize: 15),
+                        ),
                       ),
                       IconButton(
                         onPressed: () {
@@ -590,7 +596,8 @@ show(BuildContext context) {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0, right: 30),
-                        child: Column(
+                        child:
+                        Column(
                           children: logperiod.map((userone) {
                             return Row(
                                 mainAxisAlignment: MainAxisAlignment
@@ -655,6 +662,7 @@ show(BuildContext context) {
                                     color: Colors.black),
                               ),
                               onPressed: () {
+                                value.doSomething(buildConfigure(context));
                                 //showAlertDialogs(context);
                               },
                             ),
@@ -692,3 +700,280 @@ show(BuildContext context) {
 
         });
     }
+Widget buildConfigure(BuildContext context){
+  SingingCharacter? _character = SingingCharacter.lafayette;
+  var Size = MediaQuery.of(context).size;
+  return
+    Consumer<MyModel>(
+        builder: (context, value,child) {
+          return Container(
+            color: Color(0xffe6f9fc),
+            child: Stack(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      height: 25,
+                      child: Row(
+                        children: [
+                          Text(
+                            "Logger_Data_.inn",
+                            style: TextStyle(
+                                fontSize: 10, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  border:
+                                  Border.all(color: Color(0xff939995)),
+                                  //borderRadius: BorderRadius.circular(4.0),
+                                  color: Color(0xffcfd4d1),
+                                ),
+                                width: 15,
+                                child: FittedBox(
+                                    child: TextButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          "T",
+                                          style: TextStyle(
+                                              fontSize: 35,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        )))),
+                          ),
+                          VerticalDivider(
+                            color: Colors.black87,
+                            thickness: 1,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 20,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Title : 461 STM21",
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                          VerticalDivider(
+                            color: Colors.black87,
+                            thickness: 1,
+                          ),
+                          Text(
+                            "Serial Number: 461210057",
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                          VerticalDivider(
+                            color: Colors.black87,
+                            thickness: 1,
+                          ),
+                          Text(
+                            "Logger Interval : 00Hr 30Min 00Sec",
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 20,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Offloaded Time  : 17/12/22 06:52:05Pm",
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                          VerticalDivider(
+                            color: Colors.black87,
+                            thickness: 1,
+                          ),
+                          Text(
+                            "Total Logged Points : 246",
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Container(
+                          width: Size.width,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                  color: Color(0xffb3b5b4), width: 2)
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 30,
+                                child: Table(
+
+                                  border: TableBorder.symmetric(
+                                    outside: BorderSide.none,
+                                    inside: const BorderSide(width: 1,
+                                        color: Colors.white,
+                                        style: BorderStyle.solid),
+                                  ),
+
+
+                                  children: [
+
+                                    TableRow(children: [
+                                      TableCell(child: Text("Date(DD/MM/YY)")),
+                                      TableCell(child: Text("Time")),
+                                      TableCell(child: Text("Tempreature(C)")),
+                                    ]),
+
+                                  ],
+                                ),
+                              ),
+
+
+                              ...List.generate(11, (index) =>
+                                  Table(
+                                    border: TableBorder.all(
+                                        width: 1, color: Colors.black45),
+                                    //table border
+                                    children: [
+
+                                      TableRow(children: [
+                                        TableCell(child: Text("12/12/12")),
+                                        TableCell(child: Text("07:00:05 PM")),
+                                        TableCell(child: Text("+27.7"))
+                                      ]),
+
+
+                                    ],
+                                  ),
+
+
+                              )
+                            ],
+                          )
+
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(30),
+                      height: Size.height / 2,
+
+                      decoration: BoxDecoration(
+                          color: Color(0xffb6b8ba),
+                          border: Border.all(color: Color(0xffb6b8ba))
+                      ),
+                    )
+                  ],
+                ),
+                Positioned(
+                  top: 150, left: 400,
+                  child: Container(
+                    height: 150,
+                    width: 500,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        color: Color(0xffe4f3f7)
+                    ),
+
+
+                    child: Column(
+                      children: [
+                        Container(
+                          color: Colors.white,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Data File",
+                                style: TextStyle(
+                                    color: Colors.black87, fontSize: 15),
+                              ),
+
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon: Icon(
+                                  Icons.close,
+                                  size: 15,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 20,
+
+                                backgroundImage: AssetImage(
+                                    'assets/images/download.jpeg'),
+                                //radius: 220,
+                              ),
+                              SizedBox(width: 10),
+
+                              Text(
+                                  "Do you wan to save the file Data 228321234.tmp ?")
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              color: Color(0xffd2eff7),
+                              child: TextButton(
+                                child: Text("Yes"),
+                                onPressed: () {
+                                  //value.doSomething(show(context));
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Container(
+                              color: Color(0xffd2eff7),
+                              child: TextButton(
+                                child: Text("No"),
+                                onPressed: () {
+                                  value.doSomething(buildBlank(context));
+                                },
+                              ),
+                            ),
+                            Container(
+                              color: Color(0xffd2eff7),
+                              child: TextButton(
+                                child: Text("Cancel"),
+                                onPressed: () {
+                                  value.doSomething(buildBlank(context));
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+
+
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          );
+        });
+}

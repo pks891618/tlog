@@ -3,12 +3,16 @@ import 'package:flutter/material.dart' hide MenuBar hide MenuStyle;
 import 'package:menu_bar/menu_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/screens/statical.dart';
+import 'package:tlog/screens/table_graph.dart';
 import '../custom_widgets/battery_alert.dart';
 import '../custom_widgets/configure_data.dart';
 import '../custom_widgets/configure_device.dart';
 import '../custom_widgets/current_reading.dart';
 import '../custom_widgets/stop_logging.dart';
 import '../models/anywidget.dart';
+import 'add_notes.dart';
+import 'all_graph.dart';
+import 'all_tables.dart';
 import 'overlay.dart';
 
 class HomePage extends StatefulWidget {
@@ -154,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                     width: 150,
                     color: Color(0xff0a49d1),
                     child: Center(
-                      child: const Text(
+                      child:  Text(
                         'Logger',
                         style: TextStyle(color: Colors.white),
                       ),
@@ -274,7 +278,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    stopLoggingAlert(context);
+                                    value.doSomething(stopLoggingAlert(context));
                                   },
                                   child: Container(
                                       child: Text(
@@ -301,7 +305,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    showConfiguredata(context);
+                                    value.doSomething(showConfiguredata(context));
                                   },
                                   child: Container(
                                       child: Text(
@@ -357,7 +361,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    showCurrentReading(context);
+                                    value.doSomething(showCurrentReading(context));
                                   },
                                   child: Container(
                                       child: Text(
@@ -514,8 +518,11 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {},
                         submenu: SubMenu(
                           menuItems: [
-                            MenuButton(onTap: (){}, text: Text("Add Notes",
-                              style: TextStyle(color: Color(0xff0a49d1), fontSize: 12),))
+                            MenuButton(onTap: (){}, text: TextButton(
+                              onPressed: () {   value.doSomething(addNotes(context)); },
+                              child: Text("Add Notes",
+                                style: TextStyle(color: Color(0xff0a49d1), fontSize: 12),),
+                            ))
                           ],
                         ),
                       ),
@@ -791,3 +798,205 @@ class _HomePageState extends State<HomePage> {
     ));
   }
 }
+// class _HomePageState extends State<HomePage> {
+//   double _height = 30.0;
+//   bool _isExpanded = false;
+//
+//
+//
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         body:
+//         GestureDetector(
+//           onTap: () {
+//             if (!_isExpanded) {
+//               setState(() {
+//                 _height = 500;
+//                 _isExpanded = true;
+//               });
+//             } else {
+//               setState(() {
+//                 _height = 30;
+//                 _isExpanded = false;
+//               });
+//             }
+//
+//
+//           },
+//           child: AnimatedContainer(
+//             duration: Duration(milliseconds: 300),
+//             height: _height,
+//             //width:200,
+//             decoration: BoxDecoration(
+//                 borderRadius: BorderRadius.circular(5),
+//                 color: Colors.white
+//
+//             ),
+//             width: MediaQuery
+//                 .of(context)
+//                 .size
+//                 .width/8,
+//             child: Column(
+//               children: [
+//                 Container(
+//
+//
+//                   color: Color(0xff1730bd),
+//                   padding: EdgeInsets.all(1.0),
+//                   child: GestureDetector(
+//                     onTap: () {
+//                       if (!_isExpanded) {
+//                         setState(() {
+//                           _height = 500;
+//                           _isExpanded = true;
+//                         });
+//                       } else {
+//                         setState(() {
+//                           _height = 30;
+//                           _isExpanded = false;
+//                         });
+//                       }
+//
+//
+//                     },
+//                     child: Center(child: Text('File',style: TextStyle(fontWeight: FontWeight.w700,
+//                         fontSize: 15,color: Colors.white
+//                     ),
+//                     ),
+//                     ),
+//                   ),
+//                 ),
+//
+//                 _isExpanded == true ?   Expanded(
+//                   child:
+//                   ListView(
+//                     children: [
+//                       Padding(
+//                         padding:  EdgeInsets.all(8.0),
+//                         child: Column(
+//                           mainAxisAlignment: MainAxisAlignment.start,
+//                           crossAxisAlignment: CrossAxisAlignment.start,
+//                           children: [
+//                             Row(
+//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                               children: [
+//                                 Container(child: Row(
+//                                   children: [
+//
+//                                     Icon(Icons.folder,size : 13,color: Color(0xfff7f54d),),
+//                                     SizedBox(width: 8.0),
+//                                     Text("Open",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),),),
+//                                   ],
+//                                 )),
+//
+//                                 Text("Ctrl+O",style: TextStyle(fontSize: 11),),
+//
+//                               ],
+//                             ),
+//
+//                             Row(
+//                               children: [
+//                                 Container(
+//                                   child: Row(
+//                                     children: [
+//                                       Icon(Icons.folder,size : 13,color: Color(0xfff7f54d),),
+//                                       SizedBox(width: 8.0),
+//                                       Text("Open - Start date",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
+//
+//                                     ],
+//                                   ),
+//                                 ),
+//                                 //Text("Ctrl+O")
+//                               ],
+//                             ),
+//                             Padding(
+//                               padding: const EdgeInsets.only(left: 20),
+//                               child: Text("Close",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
+//                             ),
+//                             Row(
+//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                               children: [
+//                                 Container(
+//                                   child: Row(
+//                                     children: [
+//                                       Icon(Icons.save,size : 13,color: Color(0xffbd8e17),),
+//                                       SizedBox(width: 8.0),
+//                                       Text("Save",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
+//
+//                                     ],
+//                                   ),
+//                                 ),
+//                                 Text("Ctrl+s",style: TextStyle(fontSize: 11),)
+//                               ],
+//                             ),
+//                             Row(
+//                               children: [
+//                                 Container(
+//                                   child: Row(
+//                                     children: [
+//                                       Icon(Icons.save,size : 13,color: Color(0xffbd8e17),),
+//                                       SizedBox(width: 8.0),
+//                                       Text("Save As...",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
+//
+//
+//
+//                                     ],
+//                                   ),
+//                                 ),
+//                                 // Text("Ctrl+O")
+//                               ],
+//                             ),
+//                             Divider(color: Colors.black.withOpacity(0.4),),
+//                             Row(
+//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                               children: [
+//                                 Container(
+//                                   child: Row(
+//                                     children: [
+//                                       Icon(Icons.print,size : 13,color: Color(0xff1772bd),),
+//                                       SizedBox(width: 8.0),
+//                                       Text("Print",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
+//
+//
+//
+//                                     ],
+//                                   ),
+//                                 ),
+//                                 Text("Ctrl+P",style: TextStyle(fontSize: 11),)
+//                               ],
+//                             ),
+//                             Divider(color: Colors.black.withOpacity(0.4),),
+//
+//                             Row(
+//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                               children: [
+//                                 Text("Export To ",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
+//                                 Icon(Icons.arrow_forward_ios,size: 12,),
+//                                 // Text("Ctrl+O")
+//                               ],
+//                             ),
+//                             Divider(color: Colors.black.withOpacity(0.4),),
+//                             Text("Exit",style: TextStyle(   color: Color(0xff1730bd),),)
+//
+//
+//
+//
+//
+//                           ],
+//                         ),
+//                       )
+//
+//
+//                     ],
+//                   ),
+//                 ) : SizedBox.shrink(),
+//
+//               ],
+//             ),
+//           ),
+//         )
+//     );
+//   }
+// }

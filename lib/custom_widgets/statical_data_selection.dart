@@ -50,7 +50,8 @@ staticalDataSelection(BuildContext context) {
         ),
       ],
     ),
-    content: Row(
+    content:
+    Row(
       children: [
         CircleAvatar(
           radius: 20,
