@@ -170,6 +170,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "screen_retriever",
+      "rootUri": "file:///home/vqcodes-05/.pub-cache/hosted/pub.dev/screen_retriever-0.1.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///home/vqcodes-05/snap/flutter/common/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -224,13 +230,19 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "window_manager",
+      "rootUri": "file:///home/vqcodes-05/.pub-cache/hosted/pub.dev/window_manager-0.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "tlog",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-02-27T14:00:21.915575Z",
+  "generated": "2023-02-28T14:06:24.507388Z",
   "generator": "pub",
   "generatorVersion": "3.0.0-261.0.dev"
 }

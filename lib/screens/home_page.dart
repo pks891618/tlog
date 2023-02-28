@@ -10,9 +10,11 @@ import '../custom_widgets/configure_device.dart';
 import '../custom_widgets/current_reading.dart';
 import '../custom_widgets/stop_logging.dart';
 import '../models/anywidget.dart';
+import '../models/models.dart';
 import 'add_notes.dart';
 import 'all_graph.dart';
 import 'all_tables.dart';
+import 'menubar_buttons.dart';
 import 'overlay.dart';
 
 class HomePage extends StatefulWidget {
@@ -35,6 +37,8 @@ class _HomePageState extends State<HomePage> {
               BarStyle(gap: 10, height: 25, backgroundColor: Colors.white),
               menuStyle: MenuStyle(backgroundColor: Colors.white),
               barButtons: [
+
+
                 BarButton(
                   text: Container(
                     height: 35,
@@ -58,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         text: Text("Open",
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 15,fontWeight: FontWeight.bold,
                               color: Color(0xff1730bd),
                             )),
                         shortcutText: 'Ctrl+O',
@@ -72,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         text: Text("Open - Start date",
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 15,fontWeight: FontWeight.bold,
                               color: Color(0xff1730bd),
                             )),
                         //shortcutText: 'Ctrl+O',
@@ -81,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {},
                         text: Text("      Close",
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 15,fontWeight: FontWeight.bold,
                               color: Color(0xff1730bd),
                             )),
                       ),
@@ -94,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         text: Text('Save',
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 15,fontWeight: FontWeight.bold,
                               color: Color(0xff1730bd),
                             )),
                         shortcutText: 'Ctrl+S',
@@ -108,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         text: Text('Save as....',
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 15,fontWeight: FontWeight.bold,
                               color: Color(0xff1730bd),
                             )),
                         //shortcutText: 'Ctrl+Shift+S',
@@ -131,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                       MenuButton(
                         text: const Text('Expot To',
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 15,fontWeight: FontWeight.bold,
                               color: Color(0xff1730bd),
                             )),
                         onTap: () {},
@@ -145,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                         // shortcutText: 'Ctrl+Q',
                         text: const Text('Exit',
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 15,fontWeight: FontWeight.bold,
                               color: Color(0xff1730bd),
                             )),
                       ),
@@ -587,164 +591,16 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
+
+
               ],
               child: Container(
                 color: Colors.white,
                // color: Color(0xffe6f9fc),
                 child: Column(
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(5.0),
-                      height: 38,
-                      width: Size.width,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: 2, color: Colors.black.withOpacity(0.4))),
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            child: FittedBox(
-                              child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.folder_copy_outlined,
-                                    size: 32,
-                                    color: Colors.amber,
-                                  )),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            child: FittedBox(
-                              child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.save,
-                                      size: 30, color: Color(0xffa68303))),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            //width: 30,
-                            child: FittedBox(
-                              child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.wifi_protected_setup,
-                                      size: 32, color: Color(0xff28bf2d))),
-                            ),
-                          ),
-                          Container(
-                            height: 25,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            width: 30,
-                            child: FittedBox(
-                              child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.table_chart_outlined,
-                                    size: 25,
-                                    color: Colors.black,
-                                  )),
-                            ),
-                          ),
-                          Container(
-                              height: 20,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4.0),
-                                color: Color(0xff038207),
-                              ),
-                              width: 20,
-                              child: FittedBox(
-                                  child: IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.arrow_forward,
-                                        size: 25,
-                                        color: Colors.white,
-                                      )))),
-                          SizedBox(width: 10),
-                          Container(
-                              height: 20,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4.0),
-                                color: Color(0xfff74623),
-                              ),
-                              width: 20,
-                              child: FittedBox(
-                                  child: IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                          Icons.keyboard_arrow_down_rounded,
-                                          size: 25,
-                                          color: Colors.white)))),
-                          Container(
-                            height: 25,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            width: 30,
-                            child: FittedBox(
-                              child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.table_chart_outlined,
-                                    size: 25,
-                                    color: Colors.black,
-                                  )),
-                            ),
-                          ),
-                          Container(
-                            height: 25,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            width: 30,
-                            child: FittedBox(
-                              child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.auto_graph_outlined,
-                                    size: 25,
-                                    color: Colors.black,
-                                  )),
-                            ),
-                          ),
-                          Container(
-                            height: 25,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            width: 30,
-                            child: FittedBox(
-                              child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.table_chart,
-                                    size: 25,
-                                    color: Colors.black,
-                                  )),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                     Container(child: value.someValue),
-
-
-
-
-
-                    // value.staticalExpand == true  ?
-                    // buildStatical(context) : value.tableExpanded == true ?
-                    // buildTable(context) : SizedBox()
+                    menubarButtons(context),
+                    Container(child: value.someValue),
                   ],
                 ),
               ),
@@ -798,205 +654,5 @@ class _HomePageState extends State<HomePage> {
     ));
   }
 }
-// class _HomePageState extends State<HomePage> {
-//   double _height = 30.0;
-//   bool _isExpanded = false;
-//
-//
-//
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         body:
-//         GestureDetector(
-//           onTap: () {
-//             if (!_isExpanded) {
-//               setState(() {
-//                 _height = 500;
-//                 _isExpanded = true;
-//               });
-//             } else {
-//               setState(() {
-//                 _height = 30;
-//                 _isExpanded = false;
-//               });
-//             }
-//
-//
-//           },
-//           child: AnimatedContainer(
-//             duration: Duration(milliseconds: 300),
-//             height: _height,
-//             //width:200,
-//             decoration: BoxDecoration(
-//                 borderRadius: BorderRadius.circular(5),
-//                 color: Colors.white
-//
-//             ),
-//             width: MediaQuery
-//                 .of(context)
-//                 .size
-//                 .width/8,
-//             child: Column(
-//               children: [
-//                 Container(
-//
-//
-//                   color: Color(0xff1730bd),
-//                   padding: EdgeInsets.all(1.0),
-//                   child: GestureDetector(
-//                     onTap: () {
-//                       if (!_isExpanded) {
-//                         setState(() {
-//                           _height = 500;
-//                           _isExpanded = true;
-//                         });
-//                       } else {
-//                         setState(() {
-//                           _height = 30;
-//                           _isExpanded = false;
-//                         });
-//                       }
-//
-//
-//                     },
-//                     child: Center(child: Text('File',style: TextStyle(fontWeight: FontWeight.w700,
-//                         fontSize: 15,color: Colors.white
-//                     ),
-//                     ),
-//                     ),
-//                   ),
-//                 ),
-//
-//                 _isExpanded == true ?   Expanded(
-//                   child:
-//                   ListView(
-//                     children: [
-//                       Padding(
-//                         padding:  EdgeInsets.all(8.0),
-//                         child: Column(
-//                           mainAxisAlignment: MainAxisAlignment.start,
-//                           crossAxisAlignment: CrossAxisAlignment.start,
-//                           children: [
-//                             Row(
-//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                               children: [
-//                                 Container(child: Row(
-//                                   children: [
-//
-//                                     Icon(Icons.folder,size : 13,color: Color(0xfff7f54d),),
-//                                     SizedBox(width: 8.0),
-//                                     Text("Open",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),),),
-//                                   ],
-//                                 )),
-//
-//                                 Text("Ctrl+O",style: TextStyle(fontSize: 11),),
-//
-//                               ],
-//                             ),
-//
-//                             Row(
-//                               children: [
-//                                 Container(
-//                                   child: Row(
-//                                     children: [
-//                                       Icon(Icons.folder,size : 13,color: Color(0xfff7f54d),),
-//                                       SizedBox(width: 8.0),
-//                                       Text("Open - Start date",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
-//
-//                                     ],
-//                                   ),
-//                                 ),
-//                                 //Text("Ctrl+O")
-//                               ],
-//                             ),
-//                             Padding(
-//                               padding: const EdgeInsets.only(left: 20),
-//                               child: Text("Close",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
-//                             ),
-//                             Row(
-//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                               children: [
-//                                 Container(
-//                                   child: Row(
-//                                     children: [
-//                                       Icon(Icons.save,size : 13,color: Color(0xffbd8e17),),
-//                                       SizedBox(width: 8.0),
-//                                       Text("Save",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
-//
-//                                     ],
-//                                   ),
-//                                 ),
-//                                 Text("Ctrl+s",style: TextStyle(fontSize: 11),)
-//                               ],
-//                             ),
-//                             Row(
-//                               children: [
-//                                 Container(
-//                                   child: Row(
-//                                     children: [
-//                                       Icon(Icons.save,size : 13,color: Color(0xffbd8e17),),
-//                                       SizedBox(width: 8.0),
-//                                       Text("Save As...",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
-//
-//
-//
-//                                     ],
-//                                   ),
-//                                 ),
-//                                 // Text("Ctrl+O")
-//                               ],
-//                             ),
-//                             Divider(color: Colors.black.withOpacity(0.4),),
-//                             Row(
-//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                               children: [
-//                                 Container(
-//                                   child: Row(
-//                                     children: [
-//                                       Icon(Icons.print,size : 13,color: Color(0xff1772bd),),
-//                                       SizedBox(width: 8.0),
-//                                       Text("Print",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
-//
-//
-//
-//                                     ],
-//                                   ),
-//                                 ),
-//                                 Text("Ctrl+P",style: TextStyle(fontSize: 11),)
-//                               ],
-//                             ),
-//                             Divider(color: Colors.black.withOpacity(0.4),),
-//
-//                             Row(
-//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                               children: [
-//                                 Text("Export To ",style: TextStyle(fontSize: 12, color: Color(0xff1730bd),)),
-//                                 Icon(Icons.arrow_forward_ios,size: 12,),
-//                                 // Text("Ctrl+O")
-//                               ],
-//                             ),
-//                             Divider(color: Colors.black.withOpacity(0.4),),
-//                             Text("Exit",style: TextStyle(   color: Color(0xff1730bd),),)
-//
-//
-//
-//
-//
-//                           ],
-//                         ),
-//                       )
-//
-//
-//                     ],
-//                   ),
-//                 ) : SizedBox.shrink(),
-//
-//               ],
-//             ),
-//           ),
-//         )
-//     );
-//   }
-// }
+
+
