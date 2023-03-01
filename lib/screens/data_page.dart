@@ -2,6 +2,7 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
+import 'package:tlog/screens/custom_button.dart';
 
 
 
@@ -134,41 +135,34 @@ class _DataPageState extends State<DataPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          height: 25,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff989c99)),
-                            color: Color(0xffcfd1d0),
-                          ),
-                          child: TextButton(
-                            child: Text(
-                              "Ok",
-                              style: TextStyle(fontSize: 10.0,
-                                  color: Colors.black),
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ),
-                        SizedBox(width: 5.0,),
-                        Container(
-                          height: 25,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff989c99)),
-                            color: Color(0xffcfd1d0),
-                          ),
-                          child: TextButton(
-                            child: Text(
-                              "Print",
-                              style: TextStyle(fontSize: 10.0,
-                                  color: Colors.black),
-                            ),
-                            onPressed: () {
+                        BackArrowButton(
 
-                            },
-                          ),
-                        ),
+
+                              child: Text(
+                                "Ok",
+                                style: TextStyle(fontSize: 10.0,
+                                    color: Colors.black),
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+
+                        SizedBox(width: 5.0,),
+                        BackArrowButton(
+
+
+                              child: Text(
+                                "Print",
+                                style: TextStyle(fontSize: 10.0,
+                                    color: Colors.black),
+                              ),
+                              onPressed: () {
+
+                              },
+                            ),
+
+
                       ],
                     ),
                   ),

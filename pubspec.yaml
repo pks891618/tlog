@@ -41,6 +41,7 @@ dependencies:
   dropdown_button2: ^1.9.4
   dotted_line: ^3.1.0
   window_manager: ^0.3.1
+  hovering: ^1.0.4
 
 dev_dependencies:
   flutter_test:

@@ -1,14 +1,13 @@
-import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:menu_bar/menu_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:tlog/screens/custom_button.dart';
 import '../custom_widgets/current_reading.dart';
 import '../models/anywidget.dart';
 import 'data_page.dart';
 
-enum SingingCharacter { lafayette, jefferson }
+
 
 Widget buildStatical(BuildContext context) {
   SingingCharacter? _character = SingingCharacter.lafayette;
@@ -174,7 +173,9 @@ Widget buildStatical(BuildContext context) {
                 width: 500,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.black),
-                    color: Color(0xffe4f3f7)),
+                   // color: Colors.red
+                    color: Color(0xffe4f3f7)
+                ),
                 child: Column(children: [
                   Container(
                     height: 30,
@@ -210,15 +211,12 @@ Widget buildStatical(BuildContext context) {
                           ),
                         ]),
                   ),
-
                   Stack(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 50),
+                      Align(
+                        alignment:Alignment.centerRight,
                         child: Container(
-                          //height: 500,
                           width: 400,
-                          //color:Colors.red,
                           color: Color(0xffe4f3f7),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -229,55 +227,59 @@ Widget buildStatical(BuildContext context) {
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
-                              Row(
-                                // mainAxisAlignment: MainAxisAlignment.start,
-                                // mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  IconButton(
-                                      onPressed: () {
+                              SizedBox(
+                                height: 25,
+                                child: ListTile(
+                                  contentPadding:EdgeInsets.all(0),
+                                  title:  Row(
+                                    children: [
+                                      Transform.scale(
+                                        scale : 0.60,
+                                        child: Radio<SingingCharacter>(
 
-                                      },
-                                      icon: value.checkExpand == true
-                                          ? Icon(
-                                              Icons.radio_button_checked,
-                                              size: 15,
-                                            )
-                                          : Icon(
-                                              Icons.radio_button_off_outlined,
-                                              size: 15,
-                                            )),
-                                  Text(
-                                    "Statical data of full cycle  ",
-                                    style: TextStyle(fontSize: 12),
+                                          activeColor: Colors.grey,
+                                          fillColor:
+                                          MaterialStateColor.resolveWith((states) => Colors.grey),
+                                          value: SingingCharacter.lafayette,
+                                          groupValue: value.buttons,
+                                          onChanged: (SingingCharacter? val) {
+                                            value.buttonSelect(val!);
+                                          },
+                                        ),
+                                      ),
+                                      Text('Statical Data of full cycle',
+                                        style: TextStyle(color: Colors.black,
+                                          fontSize: 15
+                                      ),),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
-                              Row(
-                                children: [
-                                  IconButton(
-                                      onPressed: () {
-                                        if (value.checkExpand1 == false) {
-                                          value.checkExpand == true;
+                              ListTile(
+                                contentPadding:EdgeInsets.all(0),
+                                title: Row(
+                                  children: [
+                                    Transform.scale(
+                                      scale : 0.60,
+                                      child: Radio<SingingCharacter>(
+                                        activeColor: Colors.grey,
+                                        fillColor:
+                                        MaterialStateColor.resolveWith((states) => Colors.grey),
+                                        value: SingingCharacter.jefferson,
+                                        groupValue: value.buttons,
+                                        onChanged: (SingingCharacter? val) {
+                                          value.buttonSelect(val!);
+                                        },
+                                      ),
+                                    ),
+                                     Text('Statical Data of partial cycle',
+                                       style: TextStyle(color: Colors.black,
+                                     fontSize: 15
+                                     ),
+                                     ),
+                                  ],
+                                ),
 
-                                          value.checkSomething1(true);
-                                        } else {
-                                          value.checkExpand1 == false;
-                                        }
-                                      },
-                                      icon: value.checkExpand1 == true
-                                          ? Icon(
-                                              Icons.radio_button_checked,
-                                              size: 15,
-                                            )
-                                          : Icon(
-                                              Icons.radio_button_off_outlined,
-                                              size: 15,
-                                            )),
-                                  Text(
-                                    "Statical data of full cycle  ",
-                                    style: TextStyle(fontSize: 12),
-                                  ),
-                                ],
                               ),
                               Row(
                                 children: [
@@ -335,8 +337,6 @@ Widget buildStatical(BuildContext context) {
                                         color:Color(0xffcfcbca),
                                         border: Border.all(color: Colors.black),
                                       ),
-
-
                                       child: DropdownButton2(
                                         itemPadding: EdgeInsets.all(0),
                                         value: value.selectedItem1,
@@ -452,55 +452,47 @@ Widget buildStatical(BuildContext context) {
 
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding:  EdgeInsets.only(left: 50,bottom: 10),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      height: 20,
-                                      decoration: BoxDecoration(
-                                        border:
-                                            Border.all(color: Color(0xff989c99)),
-                                        color: Color(0xffcfd1d0),
-                                      ),
-                                      child: TextButton(
-                                        child: Text(
-                                          "Show Statical Data",
-                                          style: TextStyle(
-                                              fontSize: 10.0,
-                                              color: Colors.black),
-                                        ),
-                                        onPressed: () {
-                                          if (value.checkExpand == false) {
-                                            value.checkExpand1 == true;
+                                    BackArrowButton(
+    child: Text(
+                                            "Show Statical Data",
+                                            style: TextStyle(
+                                                fontSize: 10.0,
+                                                color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            if (value.checkExpand == false) {
+                                              value.checkExpand1 == true;
 
-                                            value.checkSomething(true);
-                                          } else {
-                                            value.checkExpand == false;
-                                          }
+                                              value.checkSomething(true);
+                                            } else {
+                                              value.checkExpand == false;
+                                            }
 
 
-                                        },
-                                      ),
+                                          },
+
                                     ),
                                     SizedBox(width: 5.0),
-                                    Container(
-                                      height: 20,
-                                      decoration: BoxDecoration(
-                                        border:
-                                            Border.all(color: Color(0xff989c99)),
-                                        color: Color(0xffcfd1d0),
-                                      ),
-                                      child: TextButton(
-                                        child: Text(
-                                          "Cancel ",
-                                          style: TextStyle(
-                                              fontSize: 10.0,
-                                              color: Colors.black),
+                                    BackArrowButton(
+
+
+
+
+                                          child: Text(
+                                            "Cancel ",
+                                            style: TextStyle(
+                                                fontSize: 10.0,
+                                                color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            value.doSomething(buildBlank(context));
+                                          },
                                         ),
-                                        onPressed: () {},
-                                      ),
-                                    ),
+
                                     SizedBox(width: 15.0),
                                   ],
                                 ),
@@ -511,19 +503,101 @@ Widget buildStatical(BuildContext context) {
                       ),
                       value.checkExpand == true ?
                       Positioned(
-                        top: 100,
+                       left: 20, top: 80,
                         child: currentMessage(context),
 
                       ) : SizedBox()
                     ],
                   )
-
-
-
                 ]),
               ))
         ],
       ),
+    );
+  });
+}
+currentMessage(BuildContext context) {
+  return Consumer<MyModel>(builder: (context, value, child) {
+    return Container(
+      padding: EdgeInsets.only(left: 5.0, right: 5.0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black),
+        color: Color(0xffe6f9fc),
+      ),
+
+      width: 450,
+
+      child: Column(
+        children: [
+          Container(
+            height: 25,
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      height: 20,
+                      width: 20,
+                      color: Color(0xff03114f),
+                    ),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Text(
+                      "Message",
+                      style: TextStyle(color: Colors.black87, fontSize: 15),
+                    ),
+                  ],
+                ),
+                IconButton(
+                  onPressed: () {
+                    //  Navigator.pop(context);
+
+                    value.doSomething(buildStatical(context));
+                  },
+                  icon: Icon(
+                    Icons.close,
+                    size: 15,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 15,
+
+                backgroundImage: AssetImage('assets/images/error.jpeg'),
+                //radius: 220,
+              ),
+              SizedBox(width: 10),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  " Validation Error : \nTempreature Lower Limit must be numerical with 1 decimal place.\n"
+                      "Tempreature upper limit must be numerical with 1 decimal place",
+                  style: TextStyle(color: Colors.black87, fontSize: 12),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding:  EdgeInsets.all(8.0),
+            child: BackArrowButton(
+              child: Text("Ok"),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DataPage()));
+                //value.doSomething(show(context));
+              },
+            ),
+          ),
+        ],
+      ),
+      // color: Colors.red,
     );
   });
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide MenuBar hide MenuStyle;
+import 'package:hovering/hovering.dart';
 import 'package:menu_bar/menu_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:tlog/screens/custom_menu.dart';
 import 'package:tlog/screens/statical.dart';
 import 'package:tlog/screens/table_graph.dart';
 import '../custom_widgets/battery_alert.dart';
@@ -14,18 +16,147 @@ import '../models/models.dart';
 import 'add_notes.dart';
 import 'all_graph.dart';
 import 'all_tables.dart';
+import 'custom_button.dart';
 import 'menubar_buttons.dart';
 import 'overlay.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
 class _HomePageState extends State<HomePage> {
+
+
   @override
   Widget build(BuildContext context) {
+    List<MenuButton> menulist =[
+      MenuButton(
+        onTap: (){
+     var mymodelvalue = Provider.of<MyModel>(context, listen: false);
+          mymodelvalue.setFavourite(0);
+          },
+        text:Text("Open",
+            style: TextStyle(
+              fontSize: 15,
+              color: Color(0xff1730bd),
+            )),
+
+        shortcutText: 'Ctrl+O',
+      ),
+
+
+
+
+      MenuButton(
+        onTap: () {
+          var mymodelvalue =     Provider.of<MyModel>(context, listen: false);
+          mymodelvalue.setFavourite(1);
+        },
+        icon: Icon(
+          Icons.folder,
+          size: 13,
+          color: Color(0xfff7f54d),
+        ),
+        text: Text("Open - Start date",
+            style: TextStyle(
+              fontSize: 15,
+              color: Color(0xff1730bd),
+            )),
+        //shortcutText: 'Ctrl+O',
+      ),
+      MenuButton(
+        onTap: () {
+          var mymodelvalue =     Provider.of<MyModel>(context, listen: false);
+          mymodelvalue.setFavourite(2);
+        },
+        text: Text("      Close",
+            style: TextStyle(
+              fontSize: 15,
+              color: Color(0xff1730bd),
+            )),
+      ),
+      MenuButton(
+        onTap: () {
+          var mymodelvalue =     Provider.of<MyModel>(context, listen: false);
+          mymodelvalue.setFavourite(3);
+        },
+        icon: Icon(
+          Icons.save,
+          size: 13,
+          color: Color(0xffbd8e17),
+        ),
+        text: Text('Save',
+            style: TextStyle(
+              fontSize: 15,
+              color: Color(0xff1730bd),
+            )),
+        shortcutText: 'Ctrl+S',
+      ),
+      MenuButton(
+        onTap: () {
+          var mymodelvalue =     Provider.of<MyModel>(context, listen: false);
+          mymodelvalue.setFavourite(4);
+        },
+        icon: Icon(
+          Icons.save,
+          size: 13,
+          color: Color(0xffbd8e17),
+        ),
+        text: Text('Save as....',
+            style: TextStyle(
+              fontSize: 15,
+              color: Color(0xff1730bd),
+            )),
+        //shortcutText: 'Ctrl+Shift+S',
+      ),
+      MenuButton(
+        onTap: () {
+          var mymodelvalue =     Provider.of<MyModel>(context, listen: false);
+          mymodelvalue.setFavourite(5);
+        },
+        icon: Icon(
+          Icons.print,
+          size: 13,
+          color: Color(0xff1772bd),
+        ),
+        text: Text("Print",
+            style: TextStyle(
+              fontSize: 12,
+              color: Color(0xff1730bd),
+            )),
+        shortcutText: 'Ctrl+P',
+      ),
+      // MenuDivider(),
+      MenuButton(
+        onTap: () {
+          var mymodelvalue =     Provider.of<MyModel>(context, listen: false);
+          mymodelvalue.setFavourite(6);
+        },
+        text:  Text('Expot To',
+            style: TextStyle(
+              fontSize: 15,
+              color: Color(0xff1730bd),
+            )),
+
+        // submenu: SubMenu(
+        //   menuItems: [],
+        // ),
+      ),
+      // MenuDivider(),
+      MenuButton(
+        onTap: () {
+          var mymodelvalue =     Provider.of<MyModel>(context, listen: false);
+          mymodelvalue.setFavourite(7);
+        },
+        // shortcutText: 'Ctrl+Q',
+        text: const Text('Exit',
+            style: TextStyle(
+              fontSize: 15,
+              color: Color(0xff1730bd),
+            )),
+      ),
+    ];
+
     final Size = MediaQuery.of(context).size;
     return Scaffold(
       body: Consumer<MyModel>(
@@ -33,12 +164,16 @@ class _HomePageState extends State<HomePage> {
         return Stack(
           children: [
             MenuBar(
+              menuButtonStyle: MenuButtonStyle(
+                  backgroundColor: value.isfavourite == true ? Colors.blue : Colors.white
+              ),
               barStyle:
-              BarStyle(gap: 10, height: 25, backgroundColor: Colors.white),
-              menuStyle: MenuStyle(backgroundColor: Colors.white),
+              BarStyle(gap:10, height: 25, backgroundColor: Colors.white),
+              menuStyle: MenuStyle(
+                  backgroundColor: Colors.white,padding: EdgeInsets.all(0),
+
+              ),
               barButtons: [
-
-
                 BarButton(
                   text: Container(
                     height: 35,
@@ -53,106 +188,123 @@ class _HomePageState extends State<HomePage> {
                   ),
                   submenu: SubMenu(
                     menuItems: [
-                      MenuButton(
-                        onTap: () {},
-                        icon: Icon(
-                          Icons.folder,
-                          size: 13,
-                          color: Color(0xfff7f54d),
-                        ),
-                        text: Text("Open",
-                            style: TextStyle(
-                              fontSize: 15,fontWeight: FontWeight.bold,
-                              color: Color(0xff1730bd),
-                            )),
-                        shortcutText: 'Ctrl+O',
-                      ),
-                      MenuButton(
-                        onTap: () {},
-                        icon: Icon(
-                          Icons.folder,
-                          size: 13,
-                          color: Color(0xfff7f54d),
-                        ),
-                        text: Text("Open - Start date",
-                            style: TextStyle(
-                              fontSize: 15,fontWeight: FontWeight.bold,
-                              color: Color(0xff1730bd),
-                            )),
-                        //shortcutText: 'Ctrl+O',
-                      ),
-                      MenuButton(
-                        onTap: () {},
-                        text: Text("      Close",
-                            style: TextStyle(
-                              fontSize: 15,fontWeight: FontWeight.bold,
-                              color: Color(0xff1730bd),
-                            )),
-                      ),
-                      MenuButton(
-                        onTap: () {},
-                        icon: Icon(
-                          Icons.save,
-                          size: 13,
-                          color: Color(0xffbd8e17),
-                        ),
-                        text: Text('Save',
-                            style: TextStyle(
-                              fontSize: 15,fontWeight: FontWeight.bold,
-                              color: Color(0xff1730bd),
-                            )),
-                        shortcutText: 'Ctrl+S',
-                      ),
-                      MenuButton(
-                        onTap: () {},
-                        icon: Icon(
-                          Icons.save,
-                          size: 13,
-                          color: Color(0xffbd8e17),
-                        ),
-                        text: Text('Save as....',
-                            style: TextStyle(
-                              fontSize: 15,fontWeight: FontWeight.bold,
-                              color: Color(0xff1730bd),
-                            )),
-                        //shortcutText: 'Ctrl+Shift+S',
-                      ),
-                      MenuButton(
-                        onTap: () {},
-                        icon: Icon(
-                          Icons.print,
-                          size: 13,
-                          color: Color(0xff1772bd),
-                        ),
-                        text: Text("Print",
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Color(0xff1730bd),
-                            )),
-                        shortcutText: 'Ctrl+P',
-                      ),
-                      MenuDivider(),
-                      MenuButton(
-                        text: const Text('Expot To',
-                            style: TextStyle(
-                              fontSize: 15,fontWeight: FontWeight.bold,
-                              color: Color(0xff1730bd),
-                            )),
-                        onTap: () {},
-                        // submenu: SubMenu(
-                        //   menuItems: [],
-                        // ),
-                      ),
-                      MenuDivider(),
-                      MenuButton(
-                        onTap: () {},
-                        // shortcutText: 'Ctrl+Q',
-                        text: const Text('Exit',
-                            style: TextStyle(
-                              fontSize: 15,fontWeight: FontWeight.bold,
-                              color: Color(0xff1730bd),
-                            )),
-                      ),
+...List.generate(menulist.length, (index) => menulist[index])
+
+                      // MenuButton(
+                      // onTap: (){
+                      //   if(value.isfavourite == true)
+                      //
+                      //     {
+                      //       value.setFavourite(false);
+                      //     }else{
+                      //     value.setFavourite(true);
+                      //   }
+                      //
+                      //
+                      // },
+                      //   // icon: Icon(
+                      //   //   Icons.folder,
+                      //   //   size: 13,
+                      //   //   color: Color(0xfff7f54d),
+                      //   // ),
+                      //   text:Text("Open",
+                      //         style: TextStyle(
+                      //           fontSize: 15,
+                      //           color: Color(0xff1730bd),
+                      //         )),
+                      //
+                      //   shortcutText: 'Ctrl+O',
+                      // ),
+                      //
+                      //
+                      //
+                      //
+                      // MenuButton(
+                      //   onTap: () {},
+                      //   icon: Icon(
+                      //     Icons.folder,
+                      //     size: 13,
+                      //     color: Color(0xfff7f54d),
+                      //   ),
+                      //   text: Text("Open - Start date",
+                      //       style: TextStyle(
+                      //         fontSize: 15,
+                      //         color: Color(0xff1730bd),
+                      //       )),
+                      //   //shortcutText: 'Ctrl+O',
+                      // ),
+                      // MenuButton(
+                      //   onTap: () {},
+                      //   text: Text("      Close",
+                      //       style: TextStyle(
+                      //         fontSize: 15,
+                      //         color: Color(0xff1730bd),
+                      //       )),
+                      // ),
+                      // MenuButton(
+                      //   onTap: () {},
+                      //   icon: Icon(
+                      //     Icons.save,
+                      //     size: 13,
+                      //     color: Color(0xffbd8e17),
+                      //   ),
+                      //   text: Text('Save',
+                      //       style: TextStyle(
+                      //         fontSize: 15,
+                      //         color: Color(0xff1730bd),
+                      //       )),
+                      //   shortcutText: 'Ctrl+S',
+                      // ),
+                      // MenuButton(
+                      //   onTap: () {},
+                      //   icon: Icon(
+                      //     Icons.save,
+                      //     size: 13,
+                      //     color: Color(0xffbd8e17),
+                      //   ),
+                      //   text: Text('Save as....',
+                      //       style: TextStyle(
+                      //         fontSize: 15,
+                      //         color: Color(0xff1730bd),
+                      //       )),
+                      //   //shortcutText: 'Ctrl+Shift+S',
+                      // ),
+                      // MenuButton(
+                      //   onTap: () {},
+                      //   icon: Icon(
+                      //     Icons.print,
+                      //     size: 13,
+                      //     color: Color(0xff1772bd),
+                      //   ),
+                      //   text: Text("Print",
+                      //       style: TextStyle(
+                      //         fontSize: 12,
+                      //         color: Color(0xff1730bd),
+                      //       )),
+                      //   shortcutText: 'Ctrl+P',
+                      // ),
+                      // MenuDivider(),
+                      // MenuButton(
+                      //   text:  Text('Expot To',
+                      //       style: TextStyle(
+                      //         fontSize: 15,
+                      //         color: Color(0xff1730bd),
+                      //       )),
+                      //   onTap: () {},
+                      //   // submenu: SubMenu(
+                      //   //   menuItems: [],
+                      //   // ),
+                      // ),
+                      // MenuDivider(),
+                      // MenuButton(
+                      //   onTap: () {},
+                      //   // shortcutText: 'Ctrl+Q',
+                      //   text: const Text('Exit',
+                      //       style: TextStyle(
+                      //         fontSize: 15,
+                      //         color: Color(0xff1730bd),
+                      //       )),
+                      // ),
                     ],
                   ),
                 ),
@@ -189,6 +341,13 @@ class _HomePageState extends State<HomePage> {
                                 SizedBox(
                                   width: 10.0,
                                 ),
+
+
+
+                     // CustomMenu(onPressed: (){}, iconsbutton: Icon(Icons.wifi_protected_setup),
+                     // texts: Text("connext"),
+                     //child: Text("Connect")
+                    // )
                                 GestureDetector(
                                     onTap: () {
 
@@ -399,7 +558,7 @@ class _HomePageState extends State<HomePage> {
                     menuItems: [
                       MenuButton(
                         onTap: () {},
-                        text: const Text('   Summary',
+                        text: Text('   Summary',
                           style: TextStyle(color: Color(0xff0a49d1), fontSize: 12),),
                       ),
                       MenuButton(
@@ -418,20 +577,14 @@ class _HomePageState extends State<HomePage> {
                                   style: TextStyle(color: Color(0xff0a49d1), fontSize: 12)),
                               onPressed: () {
                                 value.doSomething(buildStatical(context));
-                                // if (value.staticalExpand == false) {
-                                //   value.tablegraphExpanded == true
-                                //       ? value.setTableGraphExpanded(false)
-                                //       : null;
-                                //   value.setStaticalExpanded(true);
-                                // } else {
-                                //   value.setStaticalExpanded(false);
-                                // }
+
+
                                 },
                             ),
                           ],
                         ),
                       ),
-                      const MenuDivider(),
+                       MenuDivider(),
                       MenuButton(
                         onTap: () {},
                         text:  TextButton(

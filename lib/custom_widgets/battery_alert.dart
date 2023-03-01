@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
+import 'package:tlog/screens/custom_button.dart';
 import 'package:tlog/screens/statical.dart';
 
 batteryAlert(BuildContext context) {
@@ -65,44 +66,36 @@ batteryAlert(BuildContext context) {
 
 
                     children: [
-                      Container(
-                        height: 25,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xff989c99)),
-                          color: Color(0xffcfd1d0),
-                        ),
-                        child: TextButton(
-                          child: Text(
-                            "Refresh",
-                            style: TextStyle(fontSize: 10.0,
-                                color: Colors.black),
+                      BackArrowButton(
+
+
+                            child: Text(
+                              "Refresh",
+                              style: TextStyle(fontSize: 10.0,
+                                  color: Colors.black),
+                            ),
+                            onPressed: () {
+                              //showAlertDialogs(context);
+                            },
                           ),
-                          onPressed: () {
-                            //showAlertDialogs(context);
-                          },
-                        ),
-                      ),
+
                       SizedBox(
                         width: 10.0,
                       ),
-                      Container(
-                        height: 25,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xff989c99)),
-                          color: Color(0xffcfd1d0),
-                        ),
-                        child: TextButton(
-                          child: Text(
-                            "Exit",
-                            style: TextStyle(fontSize: 10.0,
-                                color: Colors.black),
-                          ),
-                          onPressed: () {
-                            value.doSomething(buildBlank(context));
+                      BackArrowButton(
 
 
-                          },
-                        ),
+                            child: Text(
+                              "Exit",
+                              style: TextStyle(fontSize: 10.0,
+                                  color: Colors.black),
+                            ),
+                            onPressed: () {
+                              value.doSomething(buildBlank(context));
+
+
+                            },
+
                       ),
                     ],
                   ),

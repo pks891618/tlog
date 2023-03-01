@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
+import 'package:tlog/screens/custom_button.dart';
 import 'package:tlog/screens/statical.dart';
 
-import '../screens/data_page.dart';
+
 
 showCurrentReading(BuildContext context) {
   return Consumer<MyModel>(
@@ -84,27 +85,30 @@ showCurrentReading(BuildContext context) {
                                     MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Messages",
-                                        style: TextStyle(
-                                            color: Colors.black87,
-                                            fontSize: 12),
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          value
-                                              .doSomething(buildBlank(context));
-                                        },
-                                        icon: Icon(
-                                          Icons.close,
-                                          size: 12,
+                                  Container(
+                                    height:25,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Messages",
+                                          style: TextStyle(
+                                              color: Colors.black87,
+                                              fontSize: 12),
                                         ),
-                                      ),
-                                    ],
+                                        IconButton(
+                                          onPressed: () {
+                                            value
+                                                .doSomething(buildBlank(context));
+                                          },
+                                          icon: Icon(
+                                            Icons.close,
+                                            size: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   Row(
                                     children: [
@@ -125,26 +129,21 @@ showCurrentReading(BuildContext context) {
                                     ],
                                   ),
                                   Center(
-                                    child: Container(
-                                      height: 20,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Color(0xff989c99)),
-                                        color: Color(0xffcfd1d0),
-                                      ),
-                                      child: TextButton(
-                                        child: Text(
-                                          "Ok",
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12),
+                                    child: BackArrowButton(
+
+
+                                          child: Text(
+                                            "Ok",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 12),
+                                          ),
+                                          onPressed: () {
+                                            value.doSomething(
+                                                currentAlert(context));
+                                          },
                                         ),
-                                        onPressed: () {
-                                          value.doSomething(
-                                              currentAlert(context));
-                                        },
-                                      ),
-                                    ),
+
                                   ),
                                 ],
                               ),
@@ -157,22 +156,19 @@ showCurrentReading(BuildContext context) {
                   Divider(color: Colors.black87, thickness: 0.50),
                   Align(
                     alignment: Alignment.bottomRight,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xff989c99)),
-                        color: Color(0xffcfd1d0),
-                      ),
-                      child: TextButton(
-                        child: Text(
-                          "Exit",
-                          style: TextStyle(color: Colors.black, fontSize: 12),
+                    child: BackArrowButton(
+
+
+                          child: Text(
+                            "Exit",
+                            style: TextStyle(color: Colors.black, fontSize: 12),
+                          ),
+                          onPressed: () {
+                            value.doSomething(buildBlank(context));
+                          },
                         ),
-                        onPressed: () {
-                          value.doSomething(buildBlank(context));
-                        },
                       ),
-                    ),
-                  ),
+
                 ],
               ),
             ),
@@ -267,21 +263,17 @@ currentAlert(BuildContext context) {
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
                     alignment: Alignment.bottomRight,
-                    child: Container(
-                      height: 25,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xff989c99)),
-                        color: Color(0xffcfd1d0),
-                      ),
-                      child: TextButton(
-                        child: Text(
-                          "Exit",
-                          style: TextStyle(fontSize: 10.0, color: Colors.black),
-                        ),
-                        onPressed: () {
-                          value.doSomething(buildBlank(context));
-                        },
-                      ),
+                    child: BackArrowButton(
+
+
+                          child: Text(
+                            "Exit",
+                            style: TextStyle(fontSize: 10.0, color: Colors.black),
+                          ),
+                          onPressed: () {
+                            value.doSomething(buildBlank(context));
+                          },
+
                     ),
                   ),
                 ),
@@ -292,89 +284,4 @@ currentAlert(BuildContext context) {
   });
 }
 
-currentMessage(BuildContext context) {
-  return Consumer<MyModel>(builder: (context, value, child) {
-    return Container(
-      padding: EdgeInsets.only(left: 5.0, right: 5.0),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
-        color: Colors.white,
-      ),
 
-      width: 450,
-
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Container(
-                    height: 20,
-                    width: 20,
-                    color: Color(0xff03114f),
-                  ),
-                  SizedBox(
-                    width: 5.0,
-                  ),
-                  Text(
-                    "Message",
-                    style: TextStyle(color: Colors.black87, fontSize: 15),
-                  ),
-                ],
-              ),
-              IconButton(
-                onPressed: () {
-                  //  Navigator.pop(context);
-
-                  value.doSomething(buildStatical(context));
-                },
-                icon: Icon(
-                  Icons.close,
-                  size: 15,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              CircleAvatar(
-                radius: 20,
-
-                backgroundImage: AssetImage('assets/images/download.jpeg'),
-                //radius: 220,
-              ),
-              SizedBox(width: 10),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  " Validation Error : \nTempreature Lower Limit must be numerical with 1 decimal place.\n"
-                  "Tempreature upper limit must be numerical with 1 decimal place",
-                  style: TextStyle(color: Colors.black87, fontSize: 12),
-                ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              color: Color(0xffd2eff7),
-              child: TextButton(
-                child: Text("Ok"),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DataPage()));
-                  //value.doSomething(show(context));
-                },
-              ),
-            ),
-          ),
-
-          //
-        ],
-      ),
-      // color: Colors.red,
-    );
-  });
-}

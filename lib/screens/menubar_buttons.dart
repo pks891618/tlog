@@ -1,12 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hovering/hovering.dart';
 import 'package:menu_bar/menu_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
 import 'package:tlog/screens/statical.dart';
 import 'package:tlog/screens/table_graph.dart';
-
 import '../custom_widgets/battery_alert.dart';
 import '../custom_widgets/configure_data.dart';
 import '../custom_widgets/configure_device.dart';
@@ -31,7 +31,6 @@ Widget menubarButtons(BuildContext context){
                   width: 2, color: Colors.black.withOpacity(0.4))),
           child: Row(
             children: [
-
               BarButton(
                 text: Container(
                   height: 35,

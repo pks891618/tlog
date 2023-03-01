@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
 import '../custom_class/custom_widget_class.dart';
+import '../screens/custom_button.dart';
 import '../screens/statical.dart';
 
 
@@ -14,29 +15,24 @@ configureDevice(BuildContext context) {
         children: [
           SizedBox(height: 120),
           Container(
-            height: 150,
+
+          //  height: 120,
             width: 450,
-            decoration: BoxDecoration(border: Border.all(color: Colors.black), color: Colors.white,),
-
-            child: Padding(
-              padding: EdgeInsets.only(left: 20, right: 20, bottom: 8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
+            decoration: BoxDecoration(border: Border.all(color: Colors.black),   color: Color(0xffe4f3f7),),
+            child: Column(
+             // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 30,
+                  color:Colors.white,
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          value.doSomething(buildBlank(context));
 
-                        },
-                        child: Text(
-                          "Configuration Request",
-                          style: TextStyle(color: Colors.black87, fontSize: 15),
-                        ),
+
+                      Text(
+                        "Configuration Request",
+                        style: TextStyle(color: Colors.black87, fontSize: 15),
                       ),
                       IconButton(
                         onPressed: () {
@@ -49,7 +45,10 @@ configureDevice(BuildContext context) {
                       ),
                     ],
                   ),
-                  Row(
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
                     children: [
                       CircleAvatar(
                         radius: 15,
@@ -66,46 +65,45 @@ configureDevice(BuildContext context) {
                       ),
                     ],
                   ),
-                  SizedBox(height: 15.0),
-                  Row(
+                ),
+              //  SizedBox(height: 10.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          if (value.checkboxStatus = false){
-                             value.checkboxStatus = true;
-                          } else if (value.checkboxStatus = true){
-                             value.checkboxStatus = false;
-                          }
-                        },
-                        child: Container(
-                          color: value.checkboxStatus == true ? Color(0xffd2eff7) : Colors.red,
-                          child: TextButton(
-                            child: Text("Yes"),
-                            onPressed: () {
+                      BackArrowButton(
+                        onPressed: () {
                               value.doSomething(show(context));
                             },
+                            child:  Text(
+                              'Yes',
+                              style: TextStyle(color: Colors.black,fontSize: 11),
+                            ),
                           ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Container(
-                        color: Color(0xffd2eff7),
-                        child: TextButton(
-                          child: Text("No"),
-                          onPressed: () {
-                            value.doSomething(buildBlank(context));
-                          },
-                        ),
-                      ),
+
+                      SizedBox(width: 5.0),
+                      BackArrowButton(
+                        onPressed: () {
+                              value.doSomething(buildBlank(context));
+                            },
+                            child:  Text(
+                              'No',
+                              style: TextStyle(color: Colors.black,fontSize: 11),
+                            ),
+                          ),
+
+
+
+
+
+
                     ],
                   ),
+                ),
 
-                ],
-              ),
+              ],
             ),
           ),
 
@@ -432,44 +430,33 @@ show(BuildContext context) {
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Container(
-                              height: 25,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Color(0xff989c99)),
-                                color: Color(0xffcfd1d0),
-                              ),
-                              child: TextButton(
-                                child: Text(
-                                  "Configure",
-                                  style: TextStyle(fontSize: 10.0,
-                                      color: Colors.black),
-                                ),
-                                onPressed: () {
+
+
+                            BackArrowButton(
+                              onPressed: () {
                                   value.doSomething(buildConfigure(context));
-                                  //showAlertDialogs(context);
                                 },
+                                child:  Text(
+                                  "Configure",
+                                ),
                               ),
-                            ),
+
+
                             SizedBox(
                               width: 10.0,
                             ),
-                            Container(
-                              height: 25,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Color(0xff989c99)),
-                                color: Color(0xffcfd1d0),
-                              ),
-                              child: TextButton(
-                                child: Text(
-                                  "Cancel",
-                                  style: TextStyle(fontSize: 10.0,
-                                      color: Colors.black),
+                            BackArrowButton(
+
+
+                                  onPressed: () {
+                                    value.doSomething(buildBlank(context));
+                                  },
+                                  child:  Text(
+                                    "Cancel",
+
+
+                                  ),
                                 ),
-                                onPressed: () {
-                                  value.doSomething(buildBlank(context));
-                                },
-                              ),
-                            ),
                           ],
                         ),
                       ),
@@ -686,7 +673,8 @@ Widget buildConfigure(BuildContext context){
 
                               IconButton(
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  value.doSomething(buildBlank(context));
+                                 // Navigator.pop(context);
                                 },
                                 icon: Icon(
                                   Icons.close,
@@ -718,40 +706,46 @@ Widget buildConfigure(BuildContext context){
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
-                              color: Color(0xffd2eff7),
-                              child: TextButton(
-                                child: Text("Yes"),
+                            BackArrowButton(
+
+
                                 onPressed: () {
-                                  value.doSomething(show(context));
+                                  //value.doSomething(buildBlank(context));
                                 },
-                              ),
+                                child:  Text(
+                                  "Yes",
+
+
+                                ),
                             ),
+
                             SizedBox(
                               width: 10.0,
                             ),
-                            Container(
-                              color: Color(0xffd2eff7),
-                              child: TextButton(
-                                child: Text("No"),
-                                onPressed: () {
+                            BackArrowButton(
+                              onPressed: () {
                                   value.doSomething(buildBlank(context));
                                 },
+                                child:  Text(
+                                  "No",
+
+
                               ),
-                            ),
+                              ),
                             SizedBox(
                               width: 10.0,
                             ),
-                            Container(
-                              color: Color(0xffd2eff7),
-                              child: TextButton(
-                                child: Text("Cancel"),
-                                onPressed: () {
-                                  value.doSomething(buildBlank(context));
-                                },
+                            BackArrowButton(
+                              onPressed: () {
+                                value.doSomething(buildBlank(context));
+                              },
+                              child:  Text(
+                                "Cancel",
+
+
                               ),
                             ),
-                          ],
+                            ],
                         ),
 
 

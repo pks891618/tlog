@@ -22,3 +22,4 @@
 /home/vqcodes-05/tlog_git/tlog/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin
 /home/vqcodes-05/tlog_git/tlog/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
 /home/vqcodes-05/tlog_git/tlog/build/linux/x64/debug/bundle/data/flutter_assets/assets/images/download.jpeg
+/home/vqcodes-05/tlog_git/tlog/build/linux/x64/debug/bundle/data/flutter_assets/assets/images/error.jpeg

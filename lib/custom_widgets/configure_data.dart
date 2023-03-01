@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
+import 'package:tlog/screens/custom_button.dart';
 import '../custom_class/custom_widget_class.dart';
 import '../screens/statical.dart';
 import 'battery_alert.dart';
@@ -126,43 +127,35 @@ showConfiguredata(BuildContext context) {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Container(
-                            height: 25,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff989c99)),
-                              color: Color(0xffcfd1d0),
-                            ),
-                            child: TextButton(
-                              child: Text(
-                                "Print",
-                                style: TextStyle(
-                                    fontSize: 10.0, color: Colors.black),
+                          BackArrowButton(
+
+
+                                child: Text(
+                                  "Print",
+                                  style: TextStyle(
+                                      fontSize: 10.0, color: Colors.black),
+                                ),
+                                onPressed: () {
+                                  //showAlertDialogs(context);
+                                },
                               ),
-                              onPressed: () {
-                                //showAlertDialogs(context);
-                              },
-                            ),
-                          ),
+
                           SizedBox(
                             width: 10.0,
                           ),
-                          Container(
-                            height: 25,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xff989c99)),
-                              color: Color(0xffcfd1d0),
-                            ),
-                            child: TextButton(
-                              child: Text(
-                                "Ok",
-                                style: TextStyle(
-                                    fontSize: 10.0, color: Colors.black),
+                          BackArrowButton(
+
+
+                                child: Text(
+                                  "Ok",
+                                  style: TextStyle(
+                                      fontSize: 10.0, color: Colors.black),
+                                ),
+                                onPressed: () {
+                                  value.doSomething(batteryAlert(context));
+                                },
                               ),
-                              onPressed: () {
-                                value.doSomething(batteryAlert(context));
-                              },
-                            ),
-                          ),
+
                         ],
                       ),
                       SizedBox(

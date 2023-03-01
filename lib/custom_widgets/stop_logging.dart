@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
+import 'package:tlog/screens/custom_button.dart';
 import 'package:tlog/screens/statical.dart';
 
 stopLoggingAlert(BuildContext context) {
@@ -64,27 +65,25 @@ stopLoggingAlert(BuildContext context) {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            color: Color(0xffd2eff7),
-                            child: TextButton(
-                              child: Text("Yes"),
-                              onPressed: () {
-                                //showAlertDialogs(context);
-                              },
-                            ),
-                          ),
+                          BackArrowButton(
+
+
+                                child: Text("Yes"),
+                                onPressed: () {
+                                  //showAlertDialogs(context);
+                                },
+                              ),
+
                           SizedBox(
                             width: 10.0,
                           ),
-                          Container(
-                            color: Color(0xffd2eff7),
-                            child: TextButton(
-                              child: Text("No"),
-                              onPressed: () {
-                                value.doSomething(buildBlank(context));
+                                  BackArrowButton(
+                                    child: Text("No"),
+                                onPressed: () {
+                                  value.doSomething(buildBlank(context));
 
-                              },
-                            ),
+                                },
+
                           ),
                         ],
                       )

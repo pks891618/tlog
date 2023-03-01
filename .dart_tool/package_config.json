@@ -104,6 +104,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "hovering",
+      "rootUri": "file:///home/vqcodes-05/.pub-cache/hosted/pub.dev/hovering-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///home/vqcodes-05/.pub-cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
@@ -242,7 +248,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-02-28T14:06:24.507388Z",
+  "generated": "2023-03-01T13:31:43.179011Z",
   "generator": "pub",
   "generatorVersion": "3.0.0-261.0.dev"
 }
