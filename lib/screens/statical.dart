@@ -240,7 +240,7 @@ Widget buildStatical(BuildContext context) {
                                           activeColor: Colors.grey,
                                           fillColor:
                                           MaterialStateColor.resolveWith((states) => Colors.grey),
-                                          value: SingingCharacter.lafayette,
+                                         value: SingingCharacter.lafayette,
                                           groupValue: value.buttons,
                                           onChanged: (SingingCharacter? val) {
                                             value.buttonSelect(val!);
@@ -372,8 +372,6 @@ Widget buildStatical(BuildContext context) {
                               ),
                               SizedBox(height: 30,),
                               Row(
-
-
                                 children: [
                                   Text("Activation Enery H for MKT: "),
                                   SizedBox(width: 5.0),
@@ -383,6 +381,9 @@ Widget buildStatical(BuildContext context) {
                                     child: // Note: Same code is applied for the TextFormField as well
                                     TextField(
                                       decoration: InputDecoration(
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                            borderSide: BorderSide(color: Colors.black)),
 
                                         fillColor: Colors.white,
                                         filled: true,
@@ -410,6 +411,9 @@ Widget buildStatical(BuildContext context) {
                                       child: // Note: Same code is applied for the TextFormField as well
                                        TextField(
                                         decoration: InputDecoration(
+                                          focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                              borderSide: BorderSide(color: Colors.black)),
                                           fillColor: Colors.white,
                                           filled: true,
                                           enabledBorder: OutlineInputBorder(
@@ -419,6 +423,7 @@ Widget buildStatical(BuildContext context) {
                                         ),
                                       ),
                                   ),
+
 
 
                                 ],
@@ -435,6 +440,9 @@ Widget buildStatical(BuildContext context) {
                                     child: // Note: Same code is applied for the TextFormField as well
                                     TextField(
                                       decoration: InputDecoration(
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                            borderSide: BorderSide(color: Colors.black)),
                                         fillColor: Colors.white,
                                         filled: true,
                                         enabledBorder: OutlineInputBorder(

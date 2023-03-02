@@ -15,34 +15,40 @@ stopLoggingAlert(BuildContext context) {
                 height: 180,
                 width: 600,
                 decoration: BoxDecoration(border: Border.all(color: Colors.black),
-                  color: Colors.white,
+                  color: Color(0xfff0faf9),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //  crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Stop Loger Request",
-                            style: TextStyle(color: Colors.black87, fontSize: 15),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              value.doSomething(buildBlank(context));
-                              },
-                            icon: Icon(
-                              Icons.close,
-                              size: 15,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(height: 30,
+                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //  crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Stop Loger Request",
+                              style: TextStyle(color: Colors.black87, fontSize: 15),
                             ),
-                          ),
-                        ],
+                            IconButton(
+                              onPressed: () {
+                                value.doSomething(buildBlank(context));
+                                },
+                              icon: Icon(
+                                Icons.close,
+                                size: 15,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      Row(
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
 
                         children: [
                           CircleAvatar(
@@ -59,36 +65,39 @@ stopLoggingAlert(BuildContext context) {
                           ),
                         ],
                       ),
-                      SizedBox(height: 15),
-                      Text("    Do you want to stop Logger ?"),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          BackArrowButton(
+                    ),
+                    SizedBox(height: 15),
+                    Padding(
+                      padding:  EdgeInsets.only(left: 60,top: 8.0,bottom: 15.0),
+                      child: Text("Do you want to stop Logger ?"),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        BackArrowButton(
 
 
-                                child: Text("Yes"),
-                                onPressed: () {
-                                  //showAlertDialogs(context);
-                                },
-                              ),
+                              child: Text("Yes"),
+                              onPressed: () {
+                                //showAlertDialogs(context);
+                              },
+                            ),
 
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                                  BackArrowButton(
-                                    child: Text("No"),
-                                onPressed: () {
-                                  value.doSomething(buildBlank(context));
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                                BackArrowButton(
+                                  child: Text("No"),
+                              onPressed: () {
+                                value.doSomething(buildBlank(context));
 
-                                },
+                              },
 
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
 
               ),

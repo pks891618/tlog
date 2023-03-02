@@ -14,6 +14,10 @@ class UserTime{
   String day, hour , min , sec, name,values;
   UserTime({required this.day, required this.hour,required this.min,required this.sec,required this.name,required this.values});
 }
+class UserInterval{
+  String day, hour , min , sec, name,values;
+  UserInterval({required this.day, required this.hour,required this.min,required this.sec,required this.name,required this.values});
+}
 class LogPeriod{
   String name, address;
   LogPeriod({required this.name, required this.address});

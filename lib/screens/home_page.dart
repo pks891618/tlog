@@ -26,7 +26,6 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
 
-
   @override
   Widget build(BuildContext context) {
     List<MenuButton> menulist =[
@@ -43,10 +42,6 @@ class _HomePageState extends State<HomePage> {
 
         shortcutText: 'Ctrl+O',
       ),
-
-
-
-
       MenuButton(
         onTap: () {
           var mymodelvalue =     Provider.of<MyModel>(context, listen: false);

@@ -1,4 +1,5 @@
 
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
@@ -26,150 +27,178 @@ showConfiguredata(BuildContext context) {
       return Consumer<MyModel>(
         builder: ( context, value,  child) {
           return Column(
-            children: [
-              SizedBox(height: 100),
-              Container(
-                width: 600,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black)),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: [
-
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Configure Device Information",
-                            style: TextStyle(
-                                color: Colors.black87, fontSize: 15),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              value.doSomething(buildBlank(context));
-                            },
-                            icon: Icon(
-                              Icons.close,
-                              size: 15,
+              children: [
+                SizedBox(height: 100),
+                Container(
+                    width: 500,
+                    decoration: BoxDecoration(
+                        color: Color(0xfff0faf9),
+                        border: Border.all(color: Colors.black)),
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 30,
+                          color: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Configure Device Information",
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 15),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    value.doSomething(buildBlank(context));
+                                  },
+                                  icon: Icon(
+                                    Icons.close,
+                                    size: 15,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(width:8.0),
+                            CircleAvatar(
+                              radius: 20,
 
+                              backgroundImage: AssetImage(
+                                  'assets/images/download.jpeg'),
+                            ),
 
-                      Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 20,
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 10),
+                                  DottedLine(
+                                    lineLength: 350, lineThickness: 1,),
 
-                            backgroundImage: AssetImage(
-                                'assets/images/download.jpeg'),
-                            //radius: 220,
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            "---------------------------------------------------------------------------------------------------------------------------------------\n"
-                                "       Device Configured with the following values\n"
-                                "----------------------------------------------------------------------------------------------------------------------------------------",
-                            style: TextStyle(
-                                color: Colors.black87, fontSize: 12),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
-
-                      Column(
-                        children: allDevice.map((alldevice) {
-                          return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      left: 5.0, right: 10.0),
-                                  width: 250,
-                                  decoration: BoxDecoration(
-                                    // border:
-                                    // Border.all(color: Colors.black, width: 0.50)
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Text(
+                                      "Device Configured with the following values",
+                                      style: TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 12),
+                                    ),
                                   ),
+                                  DottedLine(
+                                    lineLength: 350, lineThickness: 1,),
+                                  SizedBox(height: 20),
+                                  Column(
+                                    children: allDevice.map((alldevice) {
+                                      return Row(
+                                          mainAxisAlignment: MainAxisAlignment
+                                              .spaceBetween,
+                                          children: [
+                                            Padding(
+                                              padding:  EdgeInsets.only(top:5.0),
+                                              child: Container(
+                                                padding: EdgeInsets.only(
+                                                    left: 20.0, right: 10.0),
+                                                width: 200,
+                                                decoration: BoxDecoration(
+                                                    //color: Colors.pink
+                                                ),
 
-                                  child: Row(
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment
+                                                      .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      alldevice.name.toString(),
+                                                      style: TextStyle(
+                                                          fontSize: 12.0,color: Colors.black,fontWeight: FontWeight.w400),
+                                                    ),
+                                                    Text(":"),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                                width: 200,
+                                                decoration: BoxDecoration(),
+                                                child: Text(
+                                                  alldevice.id.toString(),
+                                                  style: TextStyle(
+                                                      fontSize: 12.0,color: Colors.black,fontWeight: FontWeight.w400),
+                                                )),
+                                          ]);
+                                    }).toList(),
+                                  ),
+                                  SizedBox(height:15),
+                                  Row(
                                     mainAxisAlignment: MainAxisAlignment
-                                        .spaceBetween,
+                                        .center,
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .center,
                                     children: [
-                                      Text(
-                                        alldevice.name.toString(),
-                                        style: TextStyle(fontSize: 11.0),
+                                      SizedBox(width: 150),
+                                      BackArrowButton(
+                                        child: Text(
+                                          "Print",
+                                          style: TextStyle(
+                                              fontSize: 10.0,
+                                              color: Colors.black),
+                                        ),
+                                        onPressed: () {
+                                          //showAlertDialogs(context);
+                                        },
                                       ),
-                                      Text(":"),
+
+                                      SizedBox(
+                                        width: 10.0,
+                                      ),
+                                      BackArrowButton(
+                                        child: Text(
+                                          "Ok",
+                                          style: TextStyle(
+                                              fontSize: 10.0,
+                                              color: Colors.black),
+                                        ),
+                                        onPressed: () {
+                                          value.doSomething(
+                                              batteryAlert(context));
+                                        },
+                                      ),
+
                                     ],
                                   ),
-                                ),
-                                Container(
 
 
-                                    width: 300,
-                                    decoration: BoxDecoration(
-                                      // border:
-                                      // Border.all(color: Colors.black, width: 0.50)
-                                    ),
-                                    child: Text(
-                                      alldevice.id.toString(),
-                                      style: TextStyle(fontSize: 11.0),
-                                    )),
-                              ]);
-                        }).toList(),
-                      ),
-                      SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          BackArrowButton(
-
-
-                                child: Text(
-                                  "Print",
-                                  style: TextStyle(
-                                      fontSize: 10.0, color: Colors.black),
-                                ),
-                                onPressed: () {
-                                  //showAlertDialogs(context);
-                                },
+                                ],
                               ),
-
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          BackArrowButton(
-
-
-                                child: Text(
-                                  "Ok",
-                                  style: TextStyle(
-                                      fontSize: 10.0, color: Colors.black),
-                                ),
-                                onPressed: () {
-                                  value.doSomething(batteryAlert(context));
-                                },
-                              ),
-
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      )
-
-
-                    ],
-                  ),
-                ),
-              )
-
-            ],
-          );
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                      ],
+                    ))
+              ]);
         });
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,8 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
 import 'package:window_manager/window_manager.dart';
-
-import 'models/models.dart';
 import 'screens/home_page.dart';
 
 Future<void> main() async {
@@ -33,6 +31,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => MyModel()),
+
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
