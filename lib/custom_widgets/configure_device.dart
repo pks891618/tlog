@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
 import '../custom_class/custom_widget_class.dart';
-
-
 import '../screens/custom_button.dart';
 import '../screens/statical.dart';
 
