@@ -7,11 +7,8 @@ import '../custom_widgets/current_reading.dart';
 import '../models/anywidget.dart';
 import 'data_page.dart';
 
-
-
 Widget buildStatical(BuildContext context) {
   SingingCharacter? _character = SingingCharacter.lafayette;
-
 
   var Size = MediaQuery.of(context).size;
   return Consumer<MyModel>(builder: (context, value, child) {
@@ -173,9 +170,8 @@ Widget buildStatical(BuildContext context) {
                 width: 500,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.black),
-                   // color: Colors.red
-                    color: Color(0xffe4f3f7)
-                ),
+                    // color: Colors.red
+                    color: Color(0xffe4f3f7)),
                 child: Column(children: [
                   Container(
                     height: 30,
@@ -214,7 +210,7 @@ Widget buildStatical(BuildContext context) {
                   Stack(
                     children: [
                       Align(
-                        alignment:Alignment.centerRight,
+                        alignment: Alignment.centerRight,
                         child: Container(
                           width: 400,
                           color: Color(0xffe4f3f7),
@@ -230,41 +226,43 @@ Widget buildStatical(BuildContext context) {
                               SizedBox(
                                 height: 25,
                                 child: ListTile(
-                                  contentPadding:EdgeInsets.all(0),
-                                  title:  Row(
+                                  contentPadding: EdgeInsets.all(0),
+                                  title: Row(
                                     children: [
                                       Transform.scale(
-                                        scale : 0.60,
+                                        scale: 0.60,
                                         child: Radio<SingingCharacter>(
-
                                           activeColor: Colors.grey,
                                           fillColor:
-                                          MaterialStateColor.resolveWith((states) => Colors.grey),
-                                         value: SingingCharacter.lafayette,
+                                              MaterialStateColor.resolveWith(
+                                                  (states) => Colors.grey),
+                                          value: SingingCharacter.lafayette,
                                           groupValue: value.buttons,
                                           onChanged: (SingingCharacter? val) {
                                             value.buttonSelect(val!);
                                           },
                                         ),
                                       ),
-                                      Text('Statical Data of full cycle',
-                                        style: TextStyle(color: Colors.black,
-                                          fontSize: 15
-                                      ),),
+                                      Text(
+                                        'Statical Data of full cycle',
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 15),
+                                      ),
                                     ],
                                   ),
                                 ),
                               ),
                               ListTile(
-                                contentPadding:EdgeInsets.all(0),
+                                contentPadding: EdgeInsets.all(0),
                                 title: Row(
                                   children: [
                                     Transform.scale(
-                                      scale : 0.60,
+                                      scale: 0.60,
                                       child: Radio<SingingCharacter>(
                                         activeColor: Colors.grey,
                                         fillColor:
-                                        MaterialStateColor.resolveWith((states) => Colors.grey),
+                                            MaterialStateColor.resolveWith(
+                                                (states) => Colors.grey),
                                         value: SingingCharacter.jefferson,
                                         groupValue: value.buttons,
                                         onChanged: (SingingCharacter? val) {
@@ -272,14 +270,13 @@ Widget buildStatical(BuildContext context) {
                                         },
                                       ),
                                     ),
-                                     Text('Statical Data of partial cycle',
-                                       style: TextStyle(color: Colors.black,
-                                     fontSize: 15
-                                     ),
-                                     ),
+                                    Text(
+                                      'Statical Data of partial cycle',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 15),
+                                    ),
                                   ],
                                 ),
-
                               ),
                               Row(
                                 children: [
@@ -288,16 +285,14 @@ Widget buildStatical(BuildContext context) {
                                     child: Container(
                                       height: 20,
                                       decoration: BoxDecoration(
-                                        color:Color(0xffcfcbca),
+                                        color: Color(0xffcfcbca),
                                         border: Border.all(color: Colors.black),
                                       ),
-
-
                                       child: DropdownButton2(
                                         itemPadding: EdgeInsets.all(0),
                                         value: value.selectedItem,
-                                        icon:  Icon(
-                                            Icons.keyboard_arrow_down,size: 15),
+                                        icon: Icon(Icons.keyboard_arrow_down,
+                                            size: 15),
                                         buttonPadding: EdgeInsets.all(0),
                                         itemHeight: 20,
                                         buttonHeight: 17,
@@ -305,18 +300,15 @@ Widget buildStatical(BuildContext context) {
                                           print(val);
                                           value.doselectedItem(val);
                                         },
-                                        items:
-                                        value.items.map((map) {
+                                        items: value.items.map((map) {
                                           return DropdownMenuItem(
                                             value: map,
                                             child: Padding(
                                               padding:
-                                               EdgeInsets.only(
-                                                  left: 8.0),
+                                                  EdgeInsets.only(left: 8.0),
                                               child: Text(
                                                 map,
-                                                style:
-                                                TextStyle(fontSize: 14),
+                                                style: TextStyle(fontSize: 14),
                                               ),
                                             ),
                                           );
@@ -326,7 +318,9 @@ Widget buildStatical(BuildContext context) {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10,),
+                              SizedBox(
+                                height: 10,
+                              ),
                               Row(
                                 children: [
                                   Text("Date To :      "),
@@ -334,14 +328,16 @@ Widget buildStatical(BuildContext context) {
                                     child: Container(
                                       height: 20,
                                       decoration: BoxDecoration(
-                                        color:Color(0xffcfcbca),
+                                        color: Color(0xffcfcbca),
                                         border: Border.all(color: Colors.black),
                                       ),
                                       child: DropdownButton2(
                                         itemPadding: EdgeInsets.all(0),
                                         value: value.selectedItem1,
-                                        icon:  Icon(
-                                            Icons.keyboard_arrow_down,size: 15,),
+                                        icon: Icon(
+                                          Icons.keyboard_arrow_down,
+                                          size: 15,
+                                        ),
                                         buttonPadding: EdgeInsets.all(0),
                                         itemHeight: 20,
                                         buttonHeight: 17,
@@ -349,18 +345,15 @@ Widget buildStatical(BuildContext context) {
                                           print(val);
                                           value.doselectedItem1(val);
                                         },
-                                        items:
-                                        value.items1.map((map) {
+                                        items: value.items1.map((map) {
                                           return DropdownMenuItem(
                                             value: map,
                                             child: Padding(
                                               padding:
-                                              EdgeInsets.only(
-                                                  left: 8.0),
+                                                  EdgeInsets.only(left: 8.0),
                                               child: Text(
                                                 map,
-                                                style:
-                                                TextStyle(fontSize: 14),
+                                                style: TextStyle(fontSize: 14),
                                               ),
                                             ),
                                           );
@@ -370,7 +363,9 @@ Widget buildStatical(BuildContext context) {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 30,),
+                              SizedBox(
+                                height: 30,
+                              ),
                               Row(
                                 children: [
                                   Text("Activation Enery H for MKT: "),
@@ -379,17 +374,20 @@ Widget buildStatical(BuildContext context) {
                                     height: 20,
                                     width: 80,
                                     child: // Note: Same code is applied for the TextFormField as well
-                                    TextField(
+                                        TextField(
                                       decoration: InputDecoration(
                                         focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                            borderSide: BorderSide(color: Colors.black)),
-
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(5.0)),
+                                            borderSide: BorderSide(
+                                                color: Colors.black)),
                                         fillColor: Colors.white,
                                         filled: true,
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                              width: 1, color: Colors.black), //<-- SEE HERE
+                                              width: 1,
+                                              color:
+                                                  Colors.black), //<-- SEE HERE
                                         ),
                                       ),
                                     ),
@@ -406,48 +404,51 @@ Widget buildStatical(BuildContext context) {
                                 children: [
                                   Text("Tempreature Lower Limit "),
                                   SizedBox(
-                                      height: 20,
-                                         width: 80,
-                                      child: // Note: Same code is applied for the TextFormField as well
-                                       TextField(
-                                        decoration: InputDecoration(
-                                          focusedBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                              borderSide: BorderSide(color: Colors.black)),
-                                          fillColor: Colors.white,
-                                          filled: true,
-                                          enabledBorder: OutlineInputBorder(
+                                    height: 20,
+                                    width: 80,
+                                    child: // Note: Same code is applied for the TextFormField as well
+                                        TextField(
+                                      decoration: InputDecoration(
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(5.0)),
                                             borderSide: BorderSide(
-                                                width: 1, color: Colors.black), //<-- SEE HERE
-                                          ),
+                                                color: Colors.black)),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              width: 1,
+                                              color:
+                                                  Colors.black), //<-- SEE HERE
                                         ),
                                       ),
+                                    ),
                                   ),
-
-
-
                                 ],
                               ),
                               SizedBox(height: 15),
                               Row(
-
-
                                 children: [
                                   Text("Tempreature Upper Limit "),
                                   SizedBox(
                                     height: 20,
                                     width: 80,
                                     child: // Note: Same code is applied for the TextFormField as well
-                                    TextField(
+                                        TextField(
                                       decoration: InputDecoration(
                                         focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                            borderSide: BorderSide(color: Colors.black)),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(5.0)),
+                                            borderSide: BorderSide(
+                                                color: Colors.black)),
                                         fillColor: Colors.white,
                                         filled: true,
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                              width: 1, color: Colors.black), //<-- SEE HERE
+                                              width: 1,
+                                              color:
+                                                  Colors.black), //<-- SEE HERE
                                         ),
                                       ),
                                     ),
@@ -456,51 +457,41 @@ Widget buildStatical(BuildContext context) {
                               ),
                               Divider(
                                 color: Colors.black,
-
-
                               ),
                               Padding(
-                                padding:  EdgeInsets.only(left: 50,bottom: 10),
+                                padding: EdgeInsets.only(left: 50, bottom: 10),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     BackArrowButton(
-    child: Text(
-                                            "Show Statical Data",
-                                            style: TextStyle(
-                                                fontSize: 10.0,
-                                                color: Colors.black),
-                                          ),
-                                          onPressed: () {
-                                            if (value.checkExpand == false) {
-                                              value.checkExpand1 == true;
+                                      child: Text(
+                                        "Show Statical Data",
+                                        style: TextStyle(
+                                            fontSize: 10.0,
+                                            color: Colors.black),
+                                      ),
+                                      onPressed: () {
+                                        if (value.checkExpand == false) {
+                                          value.checkExpand1 == true;
 
-                                              value.checkSomething(true);
-                                            } else {
-                                              value.checkExpand == false;
-                                            }
-
-
-                                          },
-
+                                          value.checkSomething(true);
+                                        } else {
+                                          value.checkExpand == false;
+                                        }
+                                      },
                                     ),
                                     SizedBox(width: 5.0),
                                     BackArrowButton(
-
-
-
-
-                                          child: Text(
-                                            "Cancel ",
-                                            style: TextStyle(
-                                                fontSize: 10.0,
-                                                color: Colors.black),
-                                          ),
-                                          onPressed: () {
-                                            value.doSomething(buildBlank(context));
-                                          },
-                                        ),
-
+                                      child: Text(
+                                        "Cancel ",
+                                        style: TextStyle(
+                                            fontSize: 10.0,
+                                            color: Colors.black),
+                                      ),
+                                      onPressed: () {
+                                        value.doSomething(buildBlank(context));
+                                      },
+                                    ),
                                     SizedBox(width: 15.0),
                                   ],
                                 ),
@@ -509,12 +500,13 @@ Widget buildStatical(BuildContext context) {
                           ),
                         ),
                       ),
-                      value.checkExpand == true ?
-                      Positioned(
-                       left: 20, top: 80,
-                        child: currentMessage(context),
-
-                      ) : SizedBox()
+                      value.checkExpand == true
+                          ? Positioned(
+                              left: 20,
+                              top: 80,
+                              child: currentMessage(context),
+                            )
+                          : SizedBox()
                     ],
                   )
                 ]),
@@ -524,6 +516,7 @@ Widget buildStatical(BuildContext context) {
     );
   });
 }
+
 currentMessage(BuildContext context) {
   return Consumer<MyModel>(builder: (context, value, child) {
     return Container(
@@ -586,14 +579,14 @@ currentMessage(BuildContext context) {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   " Validation Error : \nTempreature Lower Limit must be numerical with 1 decimal place.\n"
-                      "Tempreature upper limit must be numerical with 1 decimal place",
+                  "Tempreature upper limit must be numerical with 1 decimal place",
                   style: TextStyle(color: Colors.black87, fontSize: 12),
                 ),
               ),
             ],
           ),
           Padding(
-            padding:  EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: BackArrowButton(
               child: Text("Ok"),
               onPressed: () {

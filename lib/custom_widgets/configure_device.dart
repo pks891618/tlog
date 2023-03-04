@@ -1,8 +1,10 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tlog/models/anywidget.dart';
 import '../custom_class/custom_widget_class.dart';
+
 import '../screens/custom_button.dart';
 import '../screens/statical.dart';
 
@@ -134,8 +136,7 @@ show(BuildContext context) {
       values: '(Value should be >= 00:00:00:05 and 00:18:12:15)',
     ),
   ];
-  return Consumer<MyModel>(
-      builder: (context, value, child) {
+  return Consumer<MyModel>(builder: (context, value, child) {
     return Column(
       children: [
         SizedBox(height: 50),
@@ -154,7 +155,7 @@ show(BuildContext context) {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
-                   // crossAxisAlignment: CrossAxisAlignment.center,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
@@ -165,7 +166,10 @@ show(BuildContext context) {
                             color: Color(0xff03114f),
                           ),
                           SizedBox(width: 5.0),
-                          Text("Data Configuration Window",style: TextStyle(fontSize: 12),),
+                          Text(
+                            "Data Configuration Window",
+                            style: TextStyle(fontSize: 12),
+                          ),
                         ],
                       ),
                       IconButton(
@@ -197,18 +201,40 @@ show(BuildContext context) {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 2, right: 30),
+                                padding: const EdgeInsets.only(right: 20),
                                 child: Container(
-                                    width: 240,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.black, width: 0.20)),
-                                    child: Text(
-                                      users[index].address,
-                                      style: TextStyle(fontSize: 11),
-                                    )),
+                                  width: 240,
+                                  height: 18,
+                                  child: const TextField(
+                                    cursorColor: Colors.black,
+                                    style: TextStyle(fontSize: 12),
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 0.22, color: Colors.black),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 1, color: Colors.black),
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
+
+                              // Padding(
+                              //   padding:
+                              //       const EdgeInsets.only(top: 2, right: 30),
+                              //   child: Container(
+                              //       width: 240,
+                              //       decoration: BoxDecoration(
+                              //           border: Border.all(
+                              //               color: Colors.black, width: 0.20)),
+                              //       child: Text(
+                              //         users[index].address,
+                              //         style: TextStyle(fontSize: 11),
+                              //       )),
+                              // ),
                             ],
                           )
                         ],
@@ -242,7 +268,7 @@ show(BuildContext context) {
                                   padding:
                                       const EdgeInsets.only(top: 2, right: 30),
                                   child: Container(
-                                    width: 240,
+                                    // width: 240,
                                     decoration: BoxDecoration(
 
                                         // border: Border.all(color: Colors.black,width: 0.20)
@@ -258,35 +284,79 @@ show(BuildContext context) {
                                             style: TextStyle(fontSize: 11),
                                           ),
                                         ),
-                                        Flexible(
-                                          flex: 1,
+
+                                        DropdownButtonHideUnderline(
                                           child: Container(
-                                            padding: EdgeInsets.all(1.0),
                                             height: 18,
-                                            width: 30,
                                             decoration: BoxDecoration(
-                                                color: Color(0xffc1c3c7),
-                                                border: Border.all(
-                                                    color: Colors.black,
-                                                    width: 0.40)),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  usertime[index].day,
-                                                  style:
-                                                      TextStyle(fontSize: 10),
-                                                ),
-                                                Icon(
-                                                  Icons.keyboard_arrow_down,
-                                                  size: 12,
-                                                ),
-                                              ],
+                                              color: Color(0xffcfcbca),
+                                              border: Border.all(
+                                                  color: Colors.black),
+                                            ),
+                                            child: DropdownButton2(
+                                              // isDense: true,
+                                              // isExpanded: true,
+                                              itemPadding: EdgeInsets.all(0),
+                                              value: value.selecteDAY,
+                                              icon: Icon(
+                                                Icons.keyboard_arrow_down,
+                                                size: 15,
+                                              ),
+                                              buttonPadding: EdgeInsets.all(0),
+                                              itemHeight: 20,
+                                              buttonHeight: 17,
+                                              onChanged: (val) {
+                                                print(val);
+                                                value.doselectedDay(val);
+                                              },
+                                              items: value.Day.map((map) {
+                                                return DropdownMenuItem(
+                                                  value: map,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 8.0),
+                                                    child: Text(
+                                                      map,
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  ),
+                                                );
+                                              }).toList(),
+                                              dropdownMaxHeight: 150,
                                             ),
                                           ),
                                         ),
+
+                                        // Flexible(
+                                        //   flex: 1,
+                                        //   child: Container(
+                                        //     padding: EdgeInsets.all(1.0),
+                                        //     height: 18,
+                                        //     width: 30,
+                                        //     decoration: BoxDecoration(
+                                        //         color: Color(0xffc1c3c7),
+                                        //         border: Border.all(
+                                        //             color: Colors.black,
+                                        //             width: 0.40)),
+                                        //     child: Row(
+                                        //       mainAxisAlignment:
+                                        //           MainAxisAlignment
+                                        //               .spaceBetween,
+                                        //       children: [
+                                        //         Text(
+                                        //           usertime[index].day,
+                                        //           style:
+                                        //               TextStyle(fontSize: 10),
+                                        //         ),
+                                        //         Icon(
+                                        //           Icons.keyboard_arrow_down,
+                                        //           size: 12,
+                                        //         ),
+                                        //       ],
+                                        //     ),
+                                        //   ),
+                                        // ),
                                         Padding(
                                           padding: EdgeInsets.all(2.0),
                                           child: Text(
@@ -294,7 +364,50 @@ show(BuildContext context) {
                                             style: TextStyle(fontSize: 11),
                                           ),
                                         ),
-                                        Flexible(
+                                        DropdownButtonHideUnderline(
+                                          child: Container(
+                                            height: 18,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffcfcbca),
+                                              border: Border.all(
+                                                  color: Colors.black),
+                                            ),
+                                            child: DropdownButton2(
+                                              // isDense: true,
+                                              // isExpanded: true,
+                                              itemPadding: EdgeInsets.all(0),
+                                              value: value.selecteHR,
+                                              icon: Icon(
+                                                Icons.keyboard_arrow_down,
+                                                size: 15,
+                                              ),
+                                              buttonPadding: EdgeInsets.all(0),
+                                              itemHeight: 20,
+                                              buttonHeight: 17,
+                                              onChanged: (val) {
+                                                print(val);
+                                                value.doselectedHR(val);
+                                              },
+                                              items: value.HR.map((map) {
+                                                return DropdownMenuItem(
+                                                  value: map,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 8.0),
+                                                    child: Text(
+                                                      map,
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  ),
+                                                );
+                                              }).toList(),
+                                              dropdownMaxHeight: 150,
+                                            ),
+                                          ),
+                                        ),
+
+                                        /*  Flexible(
                                           flex: 1,
                                           child: Container(
                                             padding: EdgeInsets.all(1.0),
@@ -322,7 +435,7 @@ show(BuildContext context) {
                                               ],
                                             ),
                                           ),
-                                        ),
+                                        ),*/
                                         Padding(
                                           padding: EdgeInsets.all(2.0),
                                           child: Text(
@@ -330,7 +443,50 @@ show(BuildContext context) {
                                             style: TextStyle(fontSize: 11),
                                           ),
                                         ),
-                                        Flexible(
+
+                                        DropdownButtonHideUnderline(
+                                          child: Container(
+                                            height: 18,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffcfcbca),
+                                              border: Border.all(
+                                                  color: Colors.black),
+                                            ),
+                                            child: DropdownButton2(
+                                              // isDense: true,
+                                              // isExpanded: true,
+                                              itemPadding: EdgeInsets.all(0),
+                                              value: value.selecteMIN,
+                                              icon: Icon(
+                                                Icons.keyboard_arrow_down,
+                                                size: 15,
+                                              ),
+                                              buttonPadding: EdgeInsets.all(0),
+                                              itemHeight: 20,
+                                              buttonHeight: 17,
+                                              onChanged: (val) {
+                                                print(val);
+                                                value.doselectedMIN(val);
+                                              },
+                                              items: value.MIN.map((map) {
+                                                return DropdownMenuItem(
+                                                  value: map,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 8.0),
+                                                    child: Text(
+                                                      map,
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  ),
+                                                );
+                                              }).toList(),
+                                              dropdownMaxHeight: 150,
+                                            ),
+                                          ),
+                                        ),
+                                        /* Flexible(
                                           flex: 1,
                                           child: Container(
                                             padding: EdgeInsets.all(1.0),
@@ -358,7 +514,7 @@ show(BuildContext context) {
                                               ],
                                             ),
                                           ),
-                                        ),
+                                        ),*/
                                         Padding(
                                           padding: EdgeInsets.all(2.0),
                                           child: Text(
@@ -366,7 +522,51 @@ show(BuildContext context) {
                                             style: TextStyle(fontSize: 11),
                                           ),
                                         ),
-                                        Flexible(
+
+                                        DropdownButtonHideUnderline(
+                                          child: Container(
+                                            height: 18,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffcfcbca),
+                                              border: Border.all(
+                                                  color: Colors.black),
+                                            ),
+                                            child: DropdownButton2(
+                                              // isDense: true,
+                                              // isExpanded: true,
+                                              itemPadding: EdgeInsets.all(0),
+                                              value: value.selecteSEC,
+                                              icon: Icon(
+                                                Icons.keyboard_arrow_down,
+                                                size: 15,
+                                              ),
+                                              buttonPadding: EdgeInsets.all(0),
+                                              itemHeight: 20,
+                                              buttonHeight: 17,
+                                              onChanged: (val) {
+                                                print(val);
+                                                value.doselectedSEC(val);
+                                              },
+                                              items: value.SEC.map((map) {
+                                                return DropdownMenuItem(
+                                                  value: map,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 8.0),
+                                                    child: Text(
+                                                      map,
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  ),
+                                                );
+                                              }).toList(),
+                                              dropdownMaxHeight: 150,
+                                            ),
+                                          ),
+                                        ),
+
+                                        /*  Flexible(
                                           flex: 1,
                                           child: Container(
                                             padding: EdgeInsets.all(1.0),
@@ -394,7 +594,7 @@ show(BuildContext context) {
                                               ],
                                             ),
                                           ),
-                                        ),
+                                        ),*/
 
                                         // ...List.generate(
                                         //     4,
@@ -463,7 +663,7 @@ show(BuildContext context) {
                                   padding:
                                       const EdgeInsets.only(top: 2, right: 30),
                                   child: Container(
-                                    width: 240,
+                                    // width: 240,
                                     decoration: BoxDecoration(
                                         // border: Border.all(color: Colors.black,width: 0.20)
                                         ),
@@ -478,7 +678,49 @@ show(BuildContext context) {
                                             style: TextStyle(fontSize: 11),
                                           ),
                                         ),
-                                        Flexible(
+                                        DropdownButtonHideUnderline(
+                                          child: Container(
+                                            height: 18,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffcfcbca),
+                                              border: Border.all(
+                                                  color: Colors.black),
+                                            ),
+                                            child: DropdownButton2(
+                                              // isDense: true,
+                                              // isExpanded: true,
+                                              itemPadding: EdgeInsets.all(0),
+                                              value: value.selectedDay1,
+                                              icon: Icon(
+                                                Icons.keyboard_arrow_down,
+                                                size: 15,
+                                              ),
+                                              buttonPadding: EdgeInsets.all(0),
+                                              itemHeight: 20,
+                                              buttonHeight: 17,
+                                              onChanged: (val) {
+                                                print(val);
+                                                value.doselectedDay1(val);
+                                              },
+                                              items: value.Day.map((map) {
+                                                return DropdownMenuItem(
+                                                  value: map,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 8.0),
+                                                    child: Text(
+                                                      map,
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  ),
+                                                );
+                                              }).toList(),
+                                              dropdownMaxHeight: 150,
+                                            ),
+                                          ),
+                                        ),
+                                        /* Flexible(
                                           flex: 1,
                                           child: Container(
                                             padding: EdgeInsets.all(1.0),
@@ -506,7 +748,7 @@ show(BuildContext context) {
                                               ],
                                             ),
                                           ),
-                                        ),
+                                        ),*/
                                         Padding(
                                           padding: EdgeInsets.all(2.0),
                                           child: Text(
@@ -514,7 +756,50 @@ show(BuildContext context) {
                                             style: TextStyle(fontSize: 11),
                                           ),
                                         ),
-                                        Flexible(
+                                        DropdownButtonHideUnderline(
+                                          child: Container(
+                                            height: 18,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffcfcbca),
+                                              border: Border.all(
+                                                  color: Colors.black),
+                                            ),
+                                            child: DropdownButton2(
+                                              // isDense: true,
+                                              // isExpanded: true,
+                                              itemPadding: EdgeInsets.all(0),
+                                              value: value.selectedHR1,
+                                              icon: Icon(
+                                                Icons.keyboard_arrow_down,
+                                                size: 15,
+                                              ),
+                                              buttonPadding: EdgeInsets.all(0),
+                                              itemHeight: 20,
+                                              buttonHeight: 17,
+                                              onChanged: (val) {
+                                                print(val);
+                                                value.doselectedHR1(val);
+                                              },
+                                              items: value.HR.map((map) {
+                                                return DropdownMenuItem(
+                                                  value: map,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 8.0),
+                                                    child: Text(
+                                                      map,
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  ),
+                                                );
+                                              }).toList(),
+                                              dropdownMaxHeight: 150,
+                                            ),
+                                          ),
+                                        ),
+
+                                        /* Flexible(
                                           flex: 1,
                                           child: Container(
                                             padding: EdgeInsets.all(1.0),
@@ -542,7 +827,7 @@ show(BuildContext context) {
                                               ],
                                             ),
                                           ),
-                                        ),
+                                        ),*/
                                         Padding(
                                           padding: EdgeInsets.all(2.0),
                                           child: Text(
@@ -550,7 +835,49 @@ show(BuildContext context) {
                                             style: TextStyle(fontSize: 11),
                                           ),
                                         ),
-                                        Flexible(
+                                        DropdownButtonHideUnderline(
+                                          child: Container(
+                                            height: 18,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffcfcbca),
+                                              border: Border.all(
+                                                  color: Colors.black),
+                                            ),
+                                            child: DropdownButton2(
+                                              // isDense: true,
+                                              // isExpanded: true,
+                                              itemPadding: EdgeInsets.all(0),
+                                              value: value.selectedMIN1,
+                                              icon: Icon(
+                                                Icons.keyboard_arrow_down,
+                                                size: 15,
+                                              ),
+                                              buttonPadding: EdgeInsets.all(0),
+                                              itemHeight: 20,
+                                              buttonHeight: 17,
+                                              onChanged: (val) {
+                                                print(val);
+                                                value.doselectedMIN1(val);
+                                              },
+                                              items: value.MIN.map((map) {
+                                                return DropdownMenuItem(
+                                                  value: map,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 8.0),
+                                                    child: Text(
+                                                      map,
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  ),
+                                                );
+                                              }).toList(),
+                                              dropdownMaxHeight: 150,
+                                            ),
+                                          ),
+                                        ),
+                                        /* Flexible(
                                           flex: 1,
                                           child: Container(
                                             padding: EdgeInsets.all(1.0),
@@ -578,7 +905,7 @@ show(BuildContext context) {
                                               ],
                                             ),
                                           ),
-                                        ),
+                                        ),*/
                                         Padding(
                                           padding: EdgeInsets.all(2.0),
                                           child: Text(
@@ -586,7 +913,50 @@ show(BuildContext context) {
                                             style: TextStyle(fontSize: 11),
                                           ),
                                         ),
-                                        Flexible(
+                                        DropdownButtonHideUnderline(
+                                          child: Container(
+                                            height: 18,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffcfcbca),
+                                              border: Border.all(
+                                                  color: Colors.black),
+                                            ),
+                                            child: DropdownButton2(
+                                              // isDense: true,
+                                              // isExpanded: true,
+                                              itemPadding: EdgeInsets.all(0),
+                                              value: value.selectedSEC1,
+                                              icon: Icon(
+                                                Icons.keyboard_arrow_down,
+                                                size: 15,
+                                              ),
+                                              buttonPadding: EdgeInsets.all(0),
+                                              itemHeight: 20,
+                                              buttonHeight: 17,
+                                              onChanged: (val) {
+                                                print(val);
+                                                value.doselectedSEC1(val);
+                                              },
+                                              items: value.SEC.map((map) {
+                                                return DropdownMenuItem(
+                                                  value: map,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 8.0),
+                                                    child: Text(
+                                                      map,
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  ),
+                                                );
+                                              }).toList(),
+                                              dropdownMaxHeight: 150,
+                                            ),
+                                          ),
+                                        ),
+
+                                        /* Flexible(
                                           flex: 1,
                                           child: Container(
                                             padding: EdgeInsets.all(1.0),
@@ -614,7 +984,7 @@ show(BuildContext context) {
                                               ],
                                             ),
                                           ),
-                                        ),
+                                        ),*/
                                       ],
                                     ),
                                   ),
@@ -658,11 +1028,28 @@ show(BuildContext context) {
                           mainAxisAlignment: MainAxisAlignment.start,
                           //  crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(Icons.radio_button_checked,
-                                size: 12, color: Colors.black),
-                            Text(
-                              "When full",
-                              style: TextStyle(fontSize: 11),
+                            // Radio(
+                            //     value: true,
+                            //     groupValue: "groupValue",
+                            //     onChanged: (value) => {}),
+                            GestureDetector(
+                              onTap: () {
+                                value.radioSelect == false
+                                    ? value.setRadioSelect(true)
+                                    : value.setRadioSelect(false);
+                              },
+                              child: value.radioSelect == false
+                                  ? Icon(Icons.radio_button_unchecked,
+                                      size: 12, color: Colors.black)
+                                  : Icon(Icons.radio_button_checked,
+                                      size: 12, color: Colors.black),
+                            ),
+                            const Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Text(
+                                "When full",
+                                style: TextStyle(fontSize: 11),
+                              ),
                             )
                           ],
                         ),
@@ -687,19 +1074,41 @@ show(BuildContext context) {
                                     style: TextStyle(fontSize: 11.0),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 2, right: 30),
+                                    padding: const EdgeInsets.only(right: 20),
                                     child: Container(
-                                        width: 240,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.black,
-                                                width: 0.20)),
-                                        child: Text(
-                                          logperiod[index].address,
-                                          style: TextStyle(fontSize: 11),
-                                        )),
+                                      width: 240,
+                                      height: 18,
+                                      child: const TextField(
+                                        cursorColor: Colors.black,
+                                        style: TextStyle(fontSize: 12),
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                width: 0.22,
+                                                color: Colors.black),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                width: 1, color: Colors.black),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                   ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(
+                                  //       top: 2, right: 30),
+                                  //   child: Container(
+                                  //       width: 240,
+                                  //       decoration: BoxDecoration(
+                                  //           border: Border.all(
+                                  //               color: Colors.black,
+                                  //               width: 0.20)),
+                                  //       child: Text(
+                                  //         logperiod[index].address,
+                                  //         style: TextStyle(fontSize: 11),
+                                  //       )),
+                                  // ),
                                 ])
                           ],
                         ),
