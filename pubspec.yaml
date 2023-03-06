@@ -42,6 +42,7 @@ dependencies:
   dotted_line: ^3.1.0
   window_manager: ^0.3.1
   hovering: ^1.0.4
+  responsive_ui: ^3.0.0
 
 dev_dependencies:
   flutter_test:

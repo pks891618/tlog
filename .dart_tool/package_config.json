@@ -176,6 +176,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "responsive_ui",
+      "rootUri": "file:///home/vqcodes-05/.pub-cache/hosted/pub.dev/responsive_ui-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "screen_retriever",
       "rootUri": "file:///home/vqcodes-05/.pub-cache/hosted/pub.dev/screen_retriever-0.1.6",
       "packageUri": "lib/",
@@ -248,7 +254,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-03-04T04:44:15.689018Z",
+  "generated": "2023-03-06T04:36:18.019521Z",
   "generator": "pub",
   "generatorVersion": "3.0.0-285.0.dev"
 }

@@ -227,6 +227,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.5"
+  responsive_ui:
+    dependency: "direct main"
+    description:
+      name: responsive_ui
+      sha256: "8672ec68485fcc2bcff16d7949c2f88bfcb21f9025e12ba6bdf0d3c4fb64d799"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   screen_retriever:
     dependency: transitive
     description:

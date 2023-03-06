@@ -7,106 +7,99 @@ import 'package:tlog/screens/statical.dart';
 batteryAlert(BuildContext context) {
   return Consumer<MyModel>(
     builder: (context, value, child) {
-      return
-        Column(
-          children: [
-            SizedBox(height: 100),
-            Container(
-              width: 400,
-              color: Color(0xffe6f9fc),
-              child: Column(
-                children: [
-                  Container(
-                    color: Colors.white,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      return Container(
+        height: 200,
+          width: 400,
+          decoration: BoxDecoration(border: Border.all(color: Colors.black),  color: Color(0xffe6f9fc),),
+            child: Column(
+            children: [
+              Container(
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
                       children: [
-                        Row(
-                          children: [
-                            Container(
-                              height: 20,
-                              width: 20,
-                              color: Color(0xff03114f),
-                            ),
-                            SizedBox(
-                              width: 5.0,
-                            ),
-                            Text(
-                              "Battery Voltage Window",
-                              style: TextStyle(
-                                  color: Colors.black87, fontSize: 15),
-                            ),
-                          ],
+                        Container(
+                          height: 20,
+                          width: 20,
+                          color: Color(0xff03114f),
                         ),
-                        IconButton(
-                          onPressed: () {
-                           value.doSomething(buildBlank(context));
-                          },
-                          icon: Icon(
-                            Icons.close,
-                            size: 15,
-                          ),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Text(
+                          "Battery Voltage Window",
+                          style: TextStyle(
+                              color: Colors.black87, fontSize: 15),
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(height: 30),
-                  Text("+3.43,V", style: TextStyle(fontSize: 55,
-                      color: Colors.black87,
-                      fontWeight: FontWeight.bold),),
-                  SizedBox(height: 30),
-
-                  Divider(
-                    color: Colors.black,
-                  ),
-
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-
-
-                    children: [
-                      BackArrowButton(
-
-
-                            child: Text(
-                              "Refresh",
-                              style: TextStyle(fontSize: 10.0,
-                                  color: Colors.black),
-                            ),
-                            onPressed: () {
-                              //showAlertDialogs(context);
-                            },
-                          ),
-
-                      SizedBox(
-                        width: 10.0,
+                    IconButton(
+                      onPressed: () {
+                       value.doSomething(buildBlank(context));
+                      },
+                      icon: Icon(
+                        Icons.close,
+                        size: 15,
                       ),
-                      BackArrowButton(
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 10),
+              Text("+3.43,V", style: TextStyle(fontSize: 55,
+                  color: Colors.black87,
+                  fontWeight: FontWeight.bold),),
+              SizedBox(height: 30),
+
+              Divider(
+                color: Colors.black,
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
 
 
-                            child: Text(
-                              "Exit",
-                              style: TextStyle(fontSize: 10.0,
-                                  color: Colors.black),
-                            ),
-                            onPressed: () {
-                              value.doSomething(buildBlank(context));
+                children: [
+                  BackArrowButton(
 
 
-                            },
-
+                        child: Text(
+                          "Refresh",
+                          style: TextStyle(fontSize: 10.0,
+                              color: Colors.black),
+                        ),
+                        onPressed: () {
+                          //showAlertDialogs(context);
+                        },
                       ),
-                    ],
-                  ),
+
                   SizedBox(
-                    height: 30,
-                  )
+                    width: 10.0,
+                  ),
+                  BackArrowButton(
+
+
+                        child: Text(
+                          "Exit",
+                          style: TextStyle(fontSize: 10.0,
+                              color: Colors.black),
+                        ),
+                        onPressed: () {
+                          value.doSomething(buildBlank(context));
+
+
+                        },
+
+                  ),
                 ],
               ),
-            ),
-
-          ],
+              SizedBox(
+                height:10,
+              )
+            ],
+          ),
         );
     }
   );
