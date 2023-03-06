@@ -8,7 +8,7 @@ import 'screens/home_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
-  await windowManager.setMinimumSize( Size(1000, 1000));
+  await windowManager.setMinimumSize( Size(800, 600));
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {

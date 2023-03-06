@@ -13,11 +13,12 @@ Widget buildStatical(BuildContext context) {
 
   var Size = MediaQuery.of(context).size;
   return Consumer<MyModel>(builder: (context, value, child) {
+
     return Container(
       color: Color(0xffe6f9fc),
       child: Stack(
         children: [
-          Column(
+          ListView(
             children: [
               SizedBox(
                 height: 25,
@@ -114,6 +115,8 @@ Widget buildStatical(BuildContext context) {
                 child: Container(
                     width: Size.width,
                     decoration: BoxDecoration(
+
+
                         color: Colors.white,
                         border: Border.all(color: Color(0xffb3b5b4), width: 2)),
                     child: Column(
@@ -164,355 +167,360 @@ Widget buildStatical(BuildContext context) {
               )
             ],
           ),
-          // Positioned(
-          //     top: 100,
-          //     left: 400,
-          //     child: Container(
-          //       width: 500,
-          //       decoration: BoxDecoration(
-          //           border: Border.all(color: Colors.black),
-          //           // color: Colors.red
-          //           color: Color(0xffe4f3f7)),
-          //       child: Column(children: [
-          //         Container(
-          //           height: 30,
-          //           color: Colors.white,
-          //           child: Row(
-          //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //               children: [
-          //                 Row(
-          //                   children: [
-          //                     Padding(
-          //                       padding: EdgeInsets.all(8.0),
-          //                       child: Container(
-          //                         height: 20,
-          //                         width: 20,
-          //                         color: Color(0xff0a2145),
-          //                       ),
-          //                     ),
-          //                     Text(
-          //                       "Statical Data Window",
-          //                       style: TextStyle(
-          //                           color: Colors.black87, fontSize: 15),
-          //                     ),
-          //                   ],
-          //                 ),
-          //                 IconButton(
-          //                   onPressed: () {
-          //                     value.doSomething(buildBlank(context));
-          //                   },
-          //                   icon: Icon(
-          //                     Icons.close,
-          //                     size: 15,
-          //                   ),
-          //                 ),
-          //               ]),
-          //         ),
-          //         Stack(
-          //           children: [
-          //             Align(
-          //               alignment: Alignment.centerRight,
-          //               child: Container(
-          //                 //color: Colors.pink,
-          //                 width: 400,
-          //                 color: Color(0xffe4f3f7),
-          //                 child: Column(
-          //                   mainAxisAlignment: MainAxisAlignment.start,
-          //                   crossAxisAlignment: CrossAxisAlignment.start,
-          //                   children: [
-          //                     Text(
-          //                       'Statical Data Selection',
-          //                       style: TextStyle(
-          //                           fontSize: 20, fontWeight: FontWeight.bold),
-          //                     ),
-          //                     SizedBox(
-          //                       height: 25,
-          //                       child: ListTile(
-          //                         contentPadding: EdgeInsets.all(0),
-          //                         title: Row(
-          //                           children: [
-          //                             Transform.scale(
-          //                               scale: 0.60,
-          //                               child: Radio<SingingCharacter>(
-          //                                 activeColor: Colors.grey,
-          //                                 fillColor:
-          //                                     MaterialStateColor.resolveWith(
-          //                                         (states) => Colors.grey),
-          //                                 value: SingingCharacter.lafayette,
-          //                                 groupValue: value.buttons,
-          //                                 onChanged: (SingingCharacter? val) {
-          //                                   value.buttonSelect(val!);
-          //                                 },
-          //                               ),
-          //                             ),
-          //                             Text(
-          //                               'Statical Data of full cycle',
-          //                               style: TextStyle(
-          //                                   color: Colors.black, fontSize: 15),
-          //                             ),
-          //                           ],
-          //                         ),
-          //                       ),
-          //                     ),
-          //                     ListTile(
-          //                       contentPadding: EdgeInsets.all(0),
-          //                       title: Row(
-          //                         children: [
-          //                           Transform.scale(
-          //                             scale: 0.60,
-          //                             child: Radio<SingingCharacter>(
-          //                               activeColor: Colors.grey,
-          //                               fillColor:
-          //                                   MaterialStateColor.resolveWith(
-          //                                       (states) => Colors.grey),
-          //                               value: SingingCharacter.jefferson,
-          //                               groupValue: value.buttons,
-          //                               onChanged: (SingingCharacter? val) {
-          //                                 value.buttonSelect(val!);
-          //                               },
-          //                             ),
-          //                           ),
-          //                           Text(
-          //                             'Statical Data of partial cycle',
-          //                             style: TextStyle(
-          //                                 color: Colors.black, fontSize: 15),
-          //                           ),
-          //                         ],
-          //                       ),
-          //                     ),
-          //                     Row(
-          //                       children: [
-          //                         Text("Date From : "),
-          //                         DropdownButtonHideUnderline(
-          //                           child: Container(
-          //                             height: 20,
-          //                             decoration: BoxDecoration(
-          //                               color: Color(0xffcfcbca),
-          //                               border: Border.all(color: Colors.black),
-          //                             ),
-          //                             child: DropdownButton2(
-          //                               itemPadding: EdgeInsets.all(0),
-          //                               value: value.selectedItem,
-          //                               icon: Icon(Icons.keyboard_arrow_down,
-          //                                   size: 15),
-          //                               buttonPadding: EdgeInsets.all(0),
-          //                               itemHeight: 20,
-          //                               buttonHeight: 17,
-          //                               onChanged: (val) {
-          //                                 print(val);
-          //                                 value.doselectedItem(val);
-          //                               },
-          //                               items: value.items.map((map) {
-          //                                 return DropdownMenuItem(
-          //                                   value: map,
-          //                                   child: Padding(
-          //                                     padding:
-          //                                         EdgeInsets.only(left: 8.0),
-          //                                     child: Text(
-          //                                       map,
-          //                                       style: TextStyle(fontSize: 14),
-          //                                     ),
-          //                                   ),
-          //                                 );
-          //                               }).toList(),
-          //                             ),
-          //                           ),
-          //                         ),
-          //                       ],
-          //                     ),
-          //                     SizedBox(
-          //                       height: 10,
-          //                     ),
-          //                     Row(
-          //                       children: [
-          //                         Text("Date To :      "),
-          //                         DropdownButtonHideUnderline(
-          //                           child: Container(
-          //                             height: 20,
-          //                             decoration: BoxDecoration(
-          //                               color: Color(0xffcfcbca),
-          //                               border: Border.all(color: Colors.black),
-          //                             ),
-          //                             child: DropdownButton2(
-          //                               itemPadding: EdgeInsets.all(0),
-          //                               value: value.selectedItem1,
-          //                               icon: Icon(
-          //                                 Icons.keyboard_arrow_down,
-          //                                 size: 15,
-          //                               ),
-          //                               buttonPadding: EdgeInsets.all(0),
-          //                               itemHeight: 20,
-          //                               buttonHeight: 17,
-          //                               onChanged: (val) {
-          //                                 print(val);
-          //                                 value.doselectedItem1(val);
-          //                               },
-          //                               items: value.items1.map((map) {
-          //                                 return DropdownMenuItem(
-          //                                   value: map,
-          //                                   child: Padding(
-          //                                     padding:
-          //                                         EdgeInsets.only(left: 8.0),
-          //                                     child: Text(
-          //                                       map,
-          //                                       style: TextStyle(fontSize: 14),
-          //                                     ),
-          //                                   ),
-          //                                 );
-          //                               }).toList(),
-          //                             ),
-          //                           ),
-          //                         ),
-          //                       ],
-          //                     ),
-          //                     SizedBox(
-          //                       height: 30,
-          //                     ),
-          //                     Row(
-          //                       children: [
-          //                         Text("Activation Enery H for MKT: "),
-          //                         SizedBox(width: 5.0),
-          //                         SizedBox(
-          //                           height: 20,
-          //                           width: 80,
-          //                           child: // Note: Same code is applied for the TextFormField as well
-          //                               TextField(
-          //                             decoration: InputDecoration(
-          //                               focusedBorder: OutlineInputBorder(
-          //                                   borderRadius: BorderRadius.all(
-          //                                       Radius.circular(5.0)),
-          //                                   borderSide: BorderSide(
-          //                                       color: Colors.black)),
-          //                               fillColor: Colors.white,
-          //                               filled: true,
-          //                               enabledBorder: OutlineInputBorder(
-          //                                 borderSide: BorderSide(
-          //                                     width: 1,
-          //                                     color:
-          //                                         Colors.black), //<-- SEE HERE
-          //                               ),
-          //                             ),
-          //                           ),
-          //                         ),
-          //                         SizedBox(width: 5.0),
-          //                         Text("KI/mol"),
-          //                       ],
-          //                     ),
-          //                     Text("(Value Should be >= 100)"),
-          //                     SizedBox(height: 30),
-          //                     Row(
-          //                       mainAxisAlignment: MainAxisAlignment.start,
-          //                       mainAxisSize: MainAxisSize.min,
-          //                       children: [
-          //                         Text("Tempreature Lower Limit "),
-          //                         SizedBox(
-          //                           height: 20,
-          //                           width: 80,
-          //                           child: // Note: Same code is applied for the TextFormField as well
-          //                               TextField(
-          //                             decoration: InputDecoration(
-          //                               focusedBorder: OutlineInputBorder(
-          //                                   borderRadius: BorderRadius.all(
-          //                                       Radius.circular(5.0)),
-          //                                   borderSide: BorderSide(
-          //                                       color: Colors.black)),
-          //                               fillColor: Colors.white,
-          //                               filled: true,
-          //                               enabledBorder: OutlineInputBorder(
-          //                                 borderSide: BorderSide(
-          //                                     width: 1,
-          //                                     color:
-          //                                         Colors.black), //<-- SEE HERE
-          //                               ),
-          //                             ),
-          //                           ),
-          //                         ),
-          //                       ],
-          //                     ),
-          //                     SizedBox(height: 15),
-          //                     Row(
-          //                       children: [
-          //                         Text("Tempreature Upper Limit "),
-          //                         SizedBox(
-          //                           height: 20,
-          //                           width: 80,
-          //                           child: // Note: Same code is applied for the TextFormField as well
-          //                               TextField(
-          //                             decoration: InputDecoration(
-          //                               focusedBorder: OutlineInputBorder(
-          //                                   borderRadius: BorderRadius.all(
-          //                                       Radius.circular(5.0)),
-          //                                   borderSide: BorderSide(
-          //                                       color: Colors.black)),
-          //                               fillColor: Colors.white,
-          //                               filled: true,
-          //                               enabledBorder: OutlineInputBorder(
-          //                                 borderSide: BorderSide(
-          //                                     width: 1,
-          //                                     color:
-          //                                         Colors.black), //<-- SEE HERE
-          //                               ),
-          //                             ),
-          //                           ),
-          //                         ),
-          //                       ],
-          //                     ),
-          //                     Divider(
-          //                       color: Colors.black,
-          //                     ),
-          //                     Padding(
-          //                       padding: EdgeInsets.only(left: 50, bottom: 10),
-          //                       child: Row(
-          //                         mainAxisAlignment: MainAxisAlignment.start,
-          //                         children: [
-          //                           BackArrowButton(
-          //                             child: Text(
-          //                               "Show Statical Data",
-          //                               style: TextStyle(
-          //                                   fontSize: 10.0,
-          //                                   color: Colors.black),
-          //                             ),
-          //                             onPressed: () {
-          //                               if (value.checkExpand == false) {
-          //                                 value.checkExpand1 == true;
-          //
-          //                                 value.checkSomething(true);
-          //                               } else {
-          //                                 value.checkExpand == false;
-          //                               }
-          //                             },
-          //                           ),
-          //                           SizedBox(width: 5.0),
-          //                           BackArrowButton(
-          //                             child: Text(
-          //                               "Cancel ",
-          //                               style: TextStyle(
-          //                                   fontSize: 10.0,
-          //                                   color: Colors.black),
-          //                             ),
-          //                             onPressed: () {
-          //                               value.doSomething(buildBlank(context));
-          //                             },
-          //                           ),
-          //                           SizedBox(width: 15.0),
-          //                         ],
-          //                       ),
-          //                     ),
-          //                   ],
-          //                 ),
-          //               ),
-          //             ),
-          //             value.checkExpand == true
-          //                 ? Positioned(
-          //                     left: 20,
-          //                     top: 80,
-          //                     child: currentMessage(context),
-          //                   )
-          //                 : SizedBox()
-          //           ],
-          //         )
-          //       ]),
-          //     ))
+          Positioned(
+              top: 100,
+              left: 400,
+              child: Container(
+                width: 500,
+                // width: Size.width < 1000
+                //     ? Size.width / 400
+                //     : Size.width / 500,
+
+
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    // color: Colors.red
+                    color: Color(0xffe4f3f7)),
+                child: Column(children: [
+                  Container(
+                    height: 30,
+                    color: Colors.white,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 20,
+                                  width: 20,
+                                  color: Color(0xff0a2145),
+                                ),
+                              ),
+                              Text(
+                                "Statical Data Window",
+                                style: TextStyle(
+                                    color: Colors.black87, fontSize: 15),
+                              ),
+                            ],
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              value.doSomething(buildBlank(context));
+                            },
+                            icon: Icon(
+                              Icons.close,
+                              size: 15,
+                            ),
+                          ),
+                        ]),
+                  ),
+                  Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          //color: Colors.pink,
+                          width: 400,
+                          color: Color(0xffe4f3f7),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Statical Data Selection',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: 25,
+                                child: ListTile(
+                                  contentPadding: EdgeInsets.all(0),
+                                  title: Row(
+                                    children: [
+                                      Transform.scale(
+                                        scale: 0.60,
+                                        child: Radio<SingingCharacter>(
+                                          activeColor: Colors.grey,
+                                          fillColor:
+                                              MaterialStateColor.resolveWith(
+                                                  (states) => Colors.grey),
+                                          value: SingingCharacter.lafayette,
+                                          groupValue: value.buttons,
+                                          onChanged: (SingingCharacter? val) {
+                                            value.buttonSelect(val!);
+                                          },
+                                        ),
+                                      ),
+                                      Text(
+                                        'Statical Data of full cycle',
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 15),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              ListTile(
+                                contentPadding: EdgeInsets.all(0),
+                                title: Row(
+                                  children: [
+                                    Transform.scale(
+                                      scale: 0.60,
+                                      child: Radio<SingingCharacter>(
+                                        activeColor: Colors.grey,
+                                        fillColor:
+                                            MaterialStateColor.resolveWith(
+                                                (states) => Colors.grey),
+                                        value: SingingCharacter.jefferson,
+                                        groupValue: value.buttons,
+                                        onChanged: (SingingCharacter? val) {
+                                          value.buttonSelect(val!);
+                                        },
+                                      ),
+                                    ),
+                                    Text(
+                                      'Statical Data of partial cycle',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 15),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Text("Date From : "),
+                                  DropdownButtonHideUnderline(
+                                    child: Container(
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffcfcbca),
+                                        border: Border.all(color: Colors.black),
+                                      ),
+                                      child: DropdownButton2(
+                                        itemPadding: EdgeInsets.all(0),
+                                        value: value.selectedItem,
+                                        icon: Icon(Icons.keyboard_arrow_down,
+                                            size: 15),
+                                        buttonPadding: EdgeInsets.all(0),
+                                        itemHeight: 20,
+                                        buttonHeight: 17,
+                                        onChanged: (val) {
+                                          print(val);
+                                          value.doselectedItem(val);
+                                        },
+                                        items: value.items.map((map) {
+                                          return DropdownMenuItem(
+                                            value: map,
+                                            child: Padding(
+                                              padding:
+                                                  EdgeInsets.only(left: 8.0),
+                                              child: Text(
+                                                map,
+                                                style: TextStyle(fontSize: 14),
+                                              ),
+                                            ),
+                                          );
+                                        }).toList(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  Text("Date To :      "),
+                                  DropdownButtonHideUnderline(
+                                    child: Container(
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffcfcbca),
+                                        border: Border.all(color: Colors.black),
+                                      ),
+                                      child: DropdownButton2(
+                                        itemPadding: EdgeInsets.all(0),
+                                        value: value.selectedItem1,
+                                        icon: Icon(
+                                          Icons.keyboard_arrow_down,
+                                          size: 15,
+                                        ),
+                                        buttonPadding: EdgeInsets.all(0),
+                                        itemHeight: 20,
+                                        buttonHeight: 17,
+                                        onChanged: (val) {
+                                          print(val);
+                                          value.doselectedItem1(val);
+                                        },
+                                        items: value.items1.map((map) {
+                                          return DropdownMenuItem(
+                                            value: map,
+                                            child: Padding(
+                                              padding:
+                                                  EdgeInsets.only(left: 8.0),
+                                              child: Text(
+                                                map,
+                                                style: TextStyle(fontSize: 14),
+                                              ),
+                                            ),
+                                          );
+                                        }).toList(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Row(
+                                children: [
+                                  Text("Activation Enery H for MKT: "),
+                                  SizedBox(width: 5.0),
+                                  SizedBox(
+                                    height: 20,
+                                    width: 80,
+                                    child: // Note: Same code is applied for the TextFormField as well
+                                        TextField(
+                                      decoration: InputDecoration(
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(5.0)),
+                                            borderSide: BorderSide(
+                                                color: Colors.black)),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              width: 1,
+                                              color:
+                                                  Colors.black), //<-- SEE HERE
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 5.0),
+                                  Text("KI/mol"),
+                                ],
+                              ),
+                              Text("(Value Should be >= 100)"),
+                              SizedBox(height: 30),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text("Tempreature Lower Limit "),
+                                  SizedBox(
+                                    height: 20,
+                                    width: 80,
+                                    child: // Note: Same code is applied for the TextFormField as well
+                                        TextField(
+                                      decoration: InputDecoration(
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(5.0)),
+                                            borderSide: BorderSide(
+                                                color: Colors.black)),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              width: 1,
+                                              color:
+                                                  Colors.black), //<-- SEE HERE
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 15),
+                              Row(
+                                children: [
+                                  Text("Tempreature Upper Limit "),
+                                  SizedBox(
+                                    height: 20,
+                                    width: 80,
+                                    child: // Note: Same code is applied for the TextFormField as well
+                                        TextField(
+                                      decoration: InputDecoration(
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(5.0)),
+                                            borderSide: BorderSide(
+                                                color: Colors.black)),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              width: 1,
+                                              color:
+                                                  Colors.black), //<-- SEE HERE
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Divider(
+                                color: Colors.black,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 50, bottom: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    BackArrowButton(
+                                      child: Text(
+                                        "Show Statical Data",
+                                        style: TextStyle(
+                                            fontSize: 10.0,
+                                            color: Colors.black),
+                                      ),
+                                      onPressed: () {
+                                        if (value.checkExpand == false) {
+                                          value.checkExpand1 == true;
+
+                                          value.checkSomething(true);
+                                        } else {
+                                          value.checkExpand == false;
+                                        }
+                                      },
+                                    ),
+                                    SizedBox(width: 5.0),
+                                    BackArrowButton(
+                                      child: Text(
+                                        "Cancel ",
+                                        style: TextStyle(
+                                            fontSize: 10.0,
+                                            color: Colors.black),
+                                      ),
+                                      onPressed: () {
+                                        value.doSomething(buildBlank(context));
+                                      },
+                                    ),
+                                    SizedBox(width: 15.0),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      value.checkExpand == true
+                          ? Positioned(
+                              left: 20,
+                              top: 80,
+                              child: currentMessage(context),
+                            )
+                          : SizedBox()
+                    ],
+                  )
+                ]),
+              ))
         ],
       ),
     );

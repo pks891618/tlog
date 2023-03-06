@@ -345,4 +345,15 @@ class MyModel extends ChangeNotifier {
     checkExpand1 = val;
     notifyListeners();
   }
+  void clearData() {
+    selecteDAY = null;
+    selectedDay1 = null;
+    selecteHR = null;
+    selectedHR1 = null;
+    selecteMIN = null;
+    selectedMIN1 = null;
+    selecteSEC = null;
+    selectedSEC1 = null;
+    notifyListeners();
+  }
 }

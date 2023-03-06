@@ -9,6 +9,7 @@ import '../screens/custom_button.dart';
 import '../screens/statical.dart';
 
 configureDevice(BuildContext context) {
+  TextEditingController textedit = new TextEditingController();
   return Consumer<MyModel>(builder: (context, value, child) {
     return Container(
       height: 150,
@@ -72,6 +73,7 @@ configureDevice(BuildContext context) {
                 BackArrowButton(
                   onPressed: () {
                     value.doSomething(show(context));
+                    value.clearData();
                   },
                   child: Text(
                     'Yes',
@@ -281,6 +283,7 @@ show(BuildContext context) {
                                       ),
 
                                       DropdownButtonHideUnderline(
+
                                         child: Container(
                                           height: 18,
                                           decoration: BoxDecoration(
@@ -289,6 +292,9 @@ show(BuildContext context) {
                                                 color: Colors.black),
                                           ),
                                           child: DropdownButton2(
+
+
+
                                             // isDense: true,
                                             // isExpanded: true,
                                             itemPadding: EdgeInsets.all(0),
@@ -306,6 +312,7 @@ show(BuildContext context) {
                                             },
                                             items: value.Day.map((map) {
                                               return DropdownMenuItem(
+
                                                 value: map,
                                                 child: Padding(
                                                   padding: EdgeInsets.only(
